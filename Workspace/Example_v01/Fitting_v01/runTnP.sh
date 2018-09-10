@@ -1,9 +1,0 @@
-#!bin/bash
-
-cmsRun TriggerEff.py data_25ns IsoMu24_from_Tight2012_and_dBeta_015 >&IsoMu24_from_Tight2012_and_dBeta_015.log
-cmsRun TriggerEff.py data_25ns IsoMu24_from_L1_IsoMu24_and_Tight2012_and_dBeta_015 >&IsoMu24_from_L1_IsoMu24_and_Tight2012_and_dBeta_015.log
-cmsRun TriggerEff.py data_25ns L1_IsoMu24_from_Tight2012_and_dBeta_015 >&L1_IsoMu24_from_Tight2012_and_dBeta_015.log
-cmsRun TriggerEff.py data_25ns L3_IsoMu24_from_L1_IsoMu24_and_Tight2012_and_dBeta_015 >&L3_IsoMu24_from_L1_IsoMu24_and_Tight2012_and_dBeta_015.log
-cmsRun TriggerEff.py data_25ns IsoF_IsoMu24_from_L3_IsoMu24_and_L1_IsoMu24_and_Tight2012_and_dBeta_015 >&IsoF_IsoMu24_from_L3_IsoMu24_and_L1_IsoMu24_and_Tight2012_and_dBeta_015.log
-
-echo "TnP fitting: finished"
