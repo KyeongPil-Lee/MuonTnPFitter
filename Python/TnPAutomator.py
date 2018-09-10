@@ -44,9 +44,11 @@ class TnPAutomator:
 
         print "+" * 100
         print "Scripts are generated"
-        print "please run in a new shell (screen): "
+        print "please run in a new shell: "
         print "cd %s" % self.WSPath
-        print "source %s >&%s.log&" % (self.masterScriptName, self.masterScriptName.split(".sh")[0])
+        # print "source %s >&%s.log&" % (self.masterScriptName, self.masterScriptName.split(".sh")[0])
+        print "bash %s >&%s.log&" % (self.masterScriptName, self.masterScriptName.split(".sh")[0])
+        # print '/bin/bash -c "source %s" >&%s.log&' % (self.masterScriptName, self.masterScriptName.split(".sh")[0])
         print "+" * 100
 
     def CreateWorkSpaceDir(self):
