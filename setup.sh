@@ -6,6 +6,9 @@
 export MUONTNP_PATH=$(pwd)
 export PYTHONPATH=${MUONTNP_PATH}:${PYTHONPATH}
 
+# -- root setup
+export ROOT_INCLUDE_PATH=${MUONTNP_PATH}:${ROOT_INCLUDE_PATH}
+
 # -- cmssw setting
 # export SCRAM_ARCH=slc6_amd64_gcc700
 # cmsswVersion=CMSSW_10_2_1 # -- SkimTree is not working ... why?
