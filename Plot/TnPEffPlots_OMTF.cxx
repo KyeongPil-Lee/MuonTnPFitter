@@ -44,8 +44,8 @@ void DrawPlot(TString effType, TString var, Bool_t isZoomInPlot = kFALSE)
   TString canvasName = TString::Format("c_OMTF_%s_%s", effType.Data(), var.Data());
   if( isZoomInPlot ) canvasName = canvasName + "_ZoomIn";
   PlotTool::GraphCanvaswRatio *canvasRatio = new PlotTool::GraphCanvaswRatio(canvasName, 0, 0);
-  canvasRatio->Register(g_1, "before OMTF update (321475 #geq run #geq 321834)", kGreen+2);
-  canvasRatio->Register(g_2, "after OMTF update (321879 #geq run #geq 322068)", kBlue);
+  canvasRatio->Register(g_1, "before OMTF update (321475 #leq run #leq 321834)", kGreen+2);
+  canvasRatio->Register(g_2, "after OMTF update (321879 #leq run #leq 322068)", kBlue);
 
   TString titleX = "";
   if( var == "pt" )  titleX = "P_{T}(#mu) [GeV]";
