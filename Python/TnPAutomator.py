@@ -208,6 +208,8 @@ echo "FitCanvases & efficiency graphs are produced!"
         f_master.write(
 """#!bin/bash
 
+start=`date +%s`
+
 # -- setup CMSSW, enviornment variables ...
 cd {analyzerPath_}
 source setup.sh
@@ -228,6 +230,15 @@ echo "Summary: finished"
 
 cd ..
 echo "All jobs are finished"
+
+end=`date +%s`
+
+runtime=$((end-start))
+
+echo "   start:   "$start
+echo "   end:     "$end
+echo "   runtime: "$runtime
+
 
         """.format(analyzerPath_=self.analyzerPath,
                    WSPath_=self.WSPath, 
