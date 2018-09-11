@@ -1,10 +1,14 @@
 # if [ $MUONTNP_PATH ]; then
-#     echo "KP_ANALYZER_PATH is already defined: use a clean shell!"
+#     echo "MUONTNP_ANALYZER_PATH is already defined: use a clean shell!"
 #     return 1
 # fi
 
+# -- python setup
 export MUONTNP_PATH=$(pwd)
 export PYTHONPATH=${MUONTNP_PATH}:${PYTHONPATH}
+
+# -- root setup
+export ROOT_INCLUDE_PATH=${MUONTNP_PATH}:${ROOT_INCLUDE_PATH}
 
 # -- cmssw setting
 # export SCRAM_ARCH=slc6_amd64_gcc700
