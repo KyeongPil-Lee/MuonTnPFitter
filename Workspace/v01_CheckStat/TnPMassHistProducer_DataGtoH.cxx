@@ -1,6 +1,6 @@
 #include "TnPMassHistProducer.h"
 
-void TnPMassHistProducer_DataBtoF()
+void TnPMassHistProducer_DataGtoH()
 {
   Bool_t isMC = kFALSE;
   DYTnP::HistProducer *producer = new DYTnP::HistProducer("DataGtoH", isMC);
