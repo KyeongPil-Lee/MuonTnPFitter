@@ -236,6 +236,7 @@ private:
 class HistProducer
 {
 public:
+  TString type_;
   vector<TString> vec_ntuplePath_;
   Bool_t verboseLevel_;
   Bool_t isMC_;
@@ -247,8 +248,9 @@ public:
     isMC_ = kFALSE;
   }
 
-  HistProducer( Bool_t isMC ): HistProducer()
+  HistProducer( TString type, Bool_t isMC ): HistProducer()
   {
+    type_ = type;
     isMC_ = isMC;
   }
 
@@ -309,17 +311,17 @@ public:
     } // -- end of event iteration
 
     // -- save histograms
-    TFile *f_ID = TFile::Open("ROOTFile_TnPMassHist_ID.root", "RECREATE");
+    TFile *f_ID = TFile::Open("ROOTFile_TnPMassHist_ID_"+type_+".root", "RECREATE");
     hist_ID->Save( f_ID );
     f_ID->Close();
     delete hist_ID;
 
-    TFile *f_ISO = TFile::Open("ROOTFile_TnPMassHist_ISO.root", "RECREATE");
+    TFile *f_ISO = TFile::Open("ROOTFile_TnPMassHist_ISO_"+type_+".root", "RECREATE");
     hist_ISO->Save( f_ISO );
     f_ISO->Close();
     delete hist_ISO;
 
-    TFile *f_trig = TFile::Open("ROOTFile_TnPMassHist_trig.root", "RECREATE");
+    TFile *f_trig = TFile::Open("ROOTFile_TnPMassHist_trig_"+type_+".root", "RECREATE");
     hist_trig->Save( f_trig );
     f_trig->Close();
     delete hist_trig;
