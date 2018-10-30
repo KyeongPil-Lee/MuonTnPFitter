@@ -1,5 +1,13 @@
 #include "TnPTreeHandle.h"
+
+#include <TChain.h>
+#include <TFile.h>
 #include <TH1D.h>
+#include <TStopwatch.h>
+#include <TTimeStamp.h>
+#include <TString.h>
+
+#include <vector>
 
 namespace DYTnP
 {
@@ -47,7 +55,7 @@ class HistContainer
 {
 public:
   TString type_; // -- ID, ISO, trig
-  Bool_t verboseLevel_;
+  Bool_t isVerbose_;
 
   vector<Double_t> vec_ptBinEdge_;
   vector<Double_t> vec_etaBinEdge_;
@@ -87,7 +95,7 @@ public:
     Int_t ptBin = FindPtBin(pt);
     Int_t etaBin = FindEtaBin(eta);
 
-    if( verboseLevel_ )
+    if( isVerbose_ )
     {
       printf("[HistContainer::Fill]\n");
       printf("  pt = %lf  -> pt bin:  %d\n", pt, ptBin);
@@ -98,7 +106,7 @@ public:
 
     if( ptBin >= 0 && etaBin >= 0) // -- if both pt and eta are not out of range
     {
-      if( verboseLevel_ )
+      if( isVerbose_ )
       {
         printf("[HistContainer::Fill]\n");
         printf("  pt = %lf  -> pt bin: [%.0lf, %.0lf]\n", pt,  vec_ptBinEdge_[ptBin],   vec_ptBinEdge_[ptBin+1]);
@@ -141,8 +149,8 @@ public:
 private:
   void Init()
   {
-    // verboseLevel_ = kTRUE;
-    verboseLevel_ = kFALSE;
+    // isVerbose_ = kTRUE;
+    isVerbose_ = kFALSE;
     SelectBinning();
 
     MakeHist( "pass", vec2D_tnpMassHist_pass_ );
@@ -238,13 +246,13 @@ class HistProducer
 public:
   TString type_;
   vector<TString> vec_ntuplePath_;
-  Bool_t verboseLevel_;
+  Bool_t isVerbose_;
   Bool_t isMC_;
 
   HistProducer()
   {
     vec_ntuplePath_.clear();
-    verboseLevel_ = kFALSE;
+    isVerbose_ = kFALSE;
     isMC_ = kFALSE;
   }
 
@@ -261,7 +269,7 @@ public:
 
   void SetVerboseLevel( Bool_t value )
   {
-    verboseLevel_ = value;
+    isVerbose_ = value;
   }
 
   void Produce()
@@ -292,7 +300,7 @@ public:
       Double_t weight = 1.0; // -- data;
       if( isMC_ ) weight = ntuple->PUWeight * ntuple->GENWeight;
 
-      if( verboseLevel_ ) PrintEventInfo(i_ev, ntuple);
+      if( isVerbose_ ) PrintEventInfo(i_ev, ntuple);
 
       // -- ID
       Bool_t isPassingProbe_ID = kFALSE;
