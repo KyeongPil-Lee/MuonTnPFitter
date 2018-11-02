@@ -186,6 +186,7 @@ private:
         TString histName = TString::Format("h_tnpM_%s_%s_%s_%s", ptBinInfo.Data(), etaBinInfo.Data(), histType.Data(), type_.Data());
 
         TH1D* h_temp = new TH1D(histName, "", nMassBin, minM, maxM);
+        h_temp->Sumw2();
         vec_tnpMassHist.push_back( h_temp );
       }
       vec2D_tnpMassHist.push_back( vec_tnpMassHist );
