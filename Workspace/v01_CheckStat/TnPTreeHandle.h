@@ -102,8 +102,8 @@ private:
 
     if( isMC_ )
     {
-      chain_->SetBranchStatus("genWeight", 1);
-      chain_->SetBranchAddress("genWeight", &GENWeight);
+      chain_->SetBranchStatus("pair_genWeight", 1);
+      chain_->SetBranchAddress("pair_genWeight", &GENWeight);
 
       chain_->SetBranchStatus("weight", 1);
       chain_->SetBranchAddress("weight", &PUWeight);
