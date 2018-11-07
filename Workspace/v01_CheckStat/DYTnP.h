@@ -20,14 +20,21 @@ vector<Double_t> vec_ptBinEdge_trig = {17, 22, 24, 26, 28, 40, 50, 60, 120, 200,
 // };
 
 // -- 0.2 bin size
+// vector<Double_t> vec_etaBinEdge =
+// {
+//   -2.4, -2.2, -2.0, 
+//   -1.8, -1.6, -1.4, -1.2, -1.0, 
+//   -0.8, -0.6, -0.4, -0.2, 0,
+//   0.2, 0.4, 0.6, 0.8, 1.0, 
+//   1.2, 1.4, 1.6, 1.8, 2.0, 
+//   2.2, 2.4
+// };
+
+// -- 0.3 bin size
 vector<Double_t> vec_etaBinEdge =
 {
-  -2.4, -2.2, -2.0, 
-  -1.8, -1.6, -1.4, -1.2, -1.0, 
-  -0.8, -0.6, -0.4, -0.2, 0,
-  0.2, 0.4, 0.6, 0.8, 1.0, 
-  1.2, 1.4, 1.6, 1.8, 2.0, 
-  2.2, 2.4
+  -2.4, -2.1, -1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 0, 
+  0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4
 };
 
 TString ntuplePath_DataBtoF = "/scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_LegacyRereco07Aug17_SingleMuon_Run2016BtoF_GoldenJSON.root";
