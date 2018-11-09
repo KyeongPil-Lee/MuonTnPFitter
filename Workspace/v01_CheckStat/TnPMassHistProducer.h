@@ -269,9 +269,10 @@ public:
     totaltime.Start();
 
     // -- histograms
-    HistContainer *hist_ID   = new HistContainer("ID");
-    HistContainer *hist_ISO  = new HistContainer("ISO");
-    HistContainer *hist_trig = new HistContainer("trig");
+    HistContainer *hist_ID          = new HistContainer("ID");
+    HistContainer *hist_IDOverTRK   = new HistContainer("IDOverTRK");
+    HistContainer *hist_ISO         = new HistContainer("ISO");
+    HistContainer *hist_trig        = new HistContainer("trig");
 
     // -- chain & ntuple setup
     TChain *chain = new TChain("tpTree/fitter_tree");
@@ -298,6 +299,10 @@ public:
       if( IsTnPCandidate_ID(ntuple, isPassingProbe_ID) )
         hist_ID->Fill( isPassingProbe_ID, ntuple->pt, ntuple->eta, ntuple->mass, weight );
 
+      Bool_t isPassingProbe_IDOverTRK = kFALSE;
+      if( IsTnPCandidate_IDOverTRK(ntuple, isPassingProbe_IDOverTRK) )
+        hist_IDOverTRK->Fill( isPassingProbe_IDOverTRK, ntuple->pt, ntuple->eta, ntuple->mass, weight );
+
       // -- ISO
       Bool_t isPassingProbe_ISO = kFALSE;
       if( IsTnPCandidate_ISO(ntuple, isPassingProbe_ISO) )
@@ -314,6 +319,12 @@ public:
     hist_ID->Save( f_ID );
     f_ID->Close();
     delete hist_ID;
+
+    // -- save histograms
+    TFile *f_IDOverTRK = TFile::Open("ROOTFile_TnPMassHist_IDOverTRK_"+type_+".root", "RECREATE");
+    hist_IDOverTRK->Save( f_IDOverTRK );
+    f_IDOverTRK->Close();
+    delete hist_IDOverTRK;
 
     TFile *f_ISO = TFile::Open("ROOTFile_TnPMassHist_ISO_"+type_+".root", "RECREATE");
     hist_ISO->Save( f_ISO );
@@ -364,6 +375,19 @@ private:
   {
     Bool_t isTnPCand = kFALSE;
     if( IsTag(ntuple) && ntuple->pair_deltaR > 0.3) // -- no cut on probes
+    {
+      isTnPCand = kTRUE;
+      if( ntuple->HighPt == 1 ) isPassingProbe = kTRUE;
+    }
+
+    return isTnPCand;
+  }
+
+  Bool_t IsTnPCandidate_IDOverTRK(TnPTreeHandle *ntuple, Bool_t& isPassingProbe)
+  {
+    Bool_t isTnPCand = kFALSE;
+    if( IsTag(ntuple) && ntuple->pair_deltaR > 0.3 &&
+        ntuple->TM ) // -- tracker muon
     {
       isTnPCand = kTRUE;
       if( ntuple->HighPt == 1 ) isPassingProbe = kTRUE;

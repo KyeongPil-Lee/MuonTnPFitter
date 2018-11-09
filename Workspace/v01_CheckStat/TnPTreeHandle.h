@@ -27,6 +27,7 @@ public:
   Int_t HighPt;
   Int_t IsoMu24;
   Int_t IsoTkMu24;
+  Int_t TM; // -- isTrackerMuon
 
   // -- weight variables (for MC only)
   Float_t PUWeight;
@@ -100,6 +101,9 @@ private:
     chain_->SetBranchStatus("IsoTkMu24", 1);
     chain_->SetBranchAddress("IsoTkMu24", &IsoTkMu24);
 
+    chain_->SetBranchStatus("TM", 1);
+    chain_->SetBranchAddress("TM", &TM);
+
     if( isMC_ )
     {
       chain_->SetBranchStatus("pair_genWeight", 1);
@@ -127,6 +131,7 @@ private:
     HighPt = kFALSE;
     IsoMu24 = kFALSE;
     IsoTkMu24 = kFALSE;
+    TM = kFALSE;
 
     isMC_ = kFALSE;
     PUWeight = -999.0;
