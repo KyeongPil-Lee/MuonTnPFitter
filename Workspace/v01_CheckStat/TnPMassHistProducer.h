@@ -187,6 +187,7 @@ private:
     vec_ptBinEdge_.clear();
     // -- pt binning
     if( type_ == "ID" )   vec_ptBinEdge_ = DYTnP::vec_ptBinEdge_IDISO;
+    if( type_ == "IDOverTRK" )   vec_ptBinEdge_ = DYTnP::vec_ptBinEdge_IDISO;
     if( type_ == "ISO" )  vec_ptBinEdge_ = DYTnP::vec_ptBinEdge_IDISO;
     if( type_ == "trig" ) vec_ptBinEdge_ = DYTnP::vec_ptBinEdge_trig;
 
