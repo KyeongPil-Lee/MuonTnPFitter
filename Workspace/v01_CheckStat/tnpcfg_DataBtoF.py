@@ -1,22 +1,23 @@
 from Python.TnPAutomator import TnPAutomator
 
 automator = TnPAutomator()
-automator.jobName = "Example"
-automator.configName = "TnPCfg_DY2016_BinOpti.py"
+automator.jobName = "Validation_DataRunBtoF"
+automator.configName = "TnPCfg_DY2016_Validation.py"
 
-automator.inputTree = "/home/kplee/data1/TagProbe/101X/TnPTree_SingleMuon_Run2018Av123_Golden_315688_to_316271_DCSOnly_316272_to_316877.root"
+automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_LegacyRereco07Aug17_SingleMuon_Run2016BtoF_GoldenJSON.root"
 automator.isMC = False
 
-automator.doRunSkim = True
-automator.firstRun = 316361
-automator.lastRun = 999999
+automator.doRunSkim = False
+# automator.firstRun = 0
+# automator.lastRun = 999999
 
 automator.doSkim = True
-automator.skimType = "101X_IsoMu24"
+automator.skimType = "DY2016"
 
 automator.effList = [
-"IsoMu24_from_Tight2012_and_dBeta_015",
-"IsoMu24_from_L1SingleMu22_and_Tight2012_and_dBeta_015"]
+"HighPt",
+"RelTrkIso_010_from_HighPt",
+"IsoMu24_OR_IsoTkMu24_from_RelTrkIso_010_from_HighPt"]
 
 # automator.effList = [
 # "IsoMu24_from_Tight2012_and_dBeta_015",
