@@ -311,22 +311,27 @@ print "\nTemplate.Categories: \n", Template.Categories
 # print Template.Categories
 
 PtMin = 9999
-List_Pt20 = ["IsoMu20_OR_IsoTkMu20", "IsoMu20", "IsoTkMu20", "L1_IsoMu20", "L2_IsoMu20", "L3_IsoMu20", "IsoF_IsoMu20", "TkMuF_IsoTkMu20", "IsoF_IsoTkMu20", "Tight2012", "RelTrkIso_010", "L3_IsoMu20_OR_TkMuF_IsoTkMu20"]
-List_Pt22 = ["IsoMu22_OR_IsoTkMu22", "L1_IsoMu24", "L1_IsoMu27", "L1SingleMu22"]
-List_Pt24 = ["IsoMu24_OR_IsoTkMu24", "IsoMu24", "IsoTkMu24", "L2_IsoMu24", "L3_IsoMu24", "IsoF_IsoMu24", "TkMuF_IsoTkMu24", "IsoF_IsoTkMu24", "L3_IsoMu24_OR_TkMuF_IsoTkMu24", "IsoF_IsoMu24_OR_IsoF_IsoTkMu24"]
-List_Pt27 = ["IsoMu27", "IsoTkMu27", "IsoMu27_OR_IsoTkMu27", "L2_IsoMu27", "L3_IsoMu27", "IsoF_IsoMu27"]
-List_Pt45 = ["Mu45_eta2p1", "L1_Mu45_eta2p1", "L2_Mu45_eta2p1"]
-List_Pt50 = ["Mu50", "HLT_TkMu50", "Mu50_OR_TkMu50", "L1_Mu50", "L2_Mu50"]
-List_Pt100 = ["OldMu100", "TkMu100", "OldMu100_OR_TkMu100", "Mu50_OR_TkMu100", "Mu50_OR_OldMu100"]
-List_Else = ["RelTrkIso_010", "Loose", "HighPt"]
-if PassingProbe in List_Pt20: PtMin = 20+2
-elif PassingProbe in List_Pt22: PtMin = 22+2
-elif PassingProbe in List_Pt24: PtMin = 24+2
-elif PassingProbe in List_Pt27: PtMin = 27+2
-elif PassingProbe in List_Pt45: PtMin = 45+2
-elif PassingProbe in List_Pt50: PtMin = 50+2
-elif PassingProbe in List_Pt100: PtMin = 100+5
-elif PassingProbe in List_Else: PtMin = 10
+# List_Pt20 = ["IsoMu20_OR_IsoTkMu20", "IsoMu20", "IsoTkMu20", "L1_IsoMu20", "L2_IsoMu20", "L3_IsoMu20", "IsoF_IsoMu20", "TkMuF_IsoTkMu20", "IsoF_IsoTkMu20", "Tight2012", "RelTrkIso_010", "L3_IsoMu20_OR_TkMuF_IsoTkMu20"]
+# List_Pt22 = ["IsoMu22_OR_IsoTkMu22", "L1_IsoMu24", "L1_IsoMu27", "L1SingleMu22"]
+# List_Pt24 = ["IsoMu24_OR_IsoTkMu24", "IsoMu24", "IsoTkMu24", "L2_IsoMu24", "L3_IsoMu24", "IsoF_IsoMu24", "TkMuF_IsoTkMu24", "IsoF_IsoTkMu24", "L3_IsoMu24_OR_TkMuF_IsoTkMu24", "IsoF_IsoMu24_OR_IsoF_IsoTkMu24"]
+# List_Pt27 = ["IsoMu27", "IsoTkMu27", "IsoMu27_OR_IsoTkMu27", "L2_IsoMu27", "L3_IsoMu27", "IsoF_IsoMu27"]
+# List_Pt45 = ["Mu45_eta2p1", "L1_Mu45_eta2p1", "L2_Mu45_eta2p1"]
+# List_Pt50 = ["Mu50", "HLT_TkMu50", "Mu50_OR_TkMu50", "L1_Mu50", "L2_Mu50"]
+# List_Pt100 = ["OldMu100", "TkMu100", "OldMu100_OR_TkMu100", "Mu50_OR_TkMu100", "Mu50_OR_OldMu100"]
+# List_Else = ["RelTrkIso_010", "Loose", "HighPt"]
+# if PassingProbe in List_Pt20: PtMin = 20+2
+# elif PassingProbe in List_Pt22: PtMin = 22+2
+# elif PassingProbe in List_Pt24: PtMin = 24+2
+# elif PassingProbe in List_Pt27: PtMin = 27+2
+# elif PassingProbe in List_Pt45: PtMin = 45+2
+# elif PassingProbe in List_Pt50: PtMin = 50+2
+# elif PassingProbe in List_Pt100: PtMin = 100+5
+# elif PassingProbe in List_Else: PtMin = 10
+
+# -- for DY setting (1D plot will not be used, though)
+if PassingProbe == "HighPt":               PtMin = 17.0
+if PassingProbe == "RelTrkIso_010":        PtMin = 17.0
+if PassingProbe == "IsoMu24_OR_IsoTkMu24": PtMin = 17.0
 
 EtaMax = 2.4
 List_eta2p1 = ["Mu45_eta2p1", "L1_Mu45_eta2p1", "L2_Mu45_eta2p1"]
@@ -340,11 +345,21 @@ PT_ETA_BINS = cms.PSet(
 
 # -- refer to the binning used in ID+Iso case -- #
 # -- https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2#Scale_factors_review -- #
-if PassingProbe in List_Pt27: PT_ETA_BINS.pt = cms.vdouble( 29, 32, 40, 50, 60, 120, 200, 1200 )
-elif PassingProbe in List_Pt50: PT_ETA_BINS.pt = cms.vdouble( 52, 55, 60, 120, 200, 1200 )
+# if PassingProbe in List_Pt27: PT_ETA_BINS.pt = cms.vdouble( 29, 32, 40, 50, 60, 120, 200, 1200 )
+# elif PassingProbe in List_Pt50: PT_ETA_BINS.pt = cms.vdouble( 52, 55, 60, 120, 200, 1200 )
 
-if EtaMax == 2.1: PT_ETA_BINS.abseta = cms.vdouble(0.0, 0.9, 1.2, 2.1)
+# if EtaMax == 2.1: PT_ETA_BINS.abseta = cms.vdouble(0.0, 0.9, 1.2, 2.1)
 
+if PassingProbe == "HighPt" or PassingProbe == "RelTrkIso_010" or PassingProbe == "IsoMu24_OR_IsoTkMu24":
+    PT_ETA_BINS.pt = cms.vdouble( 40, 50 ) # -- only for test: higest statistics
+    PT_ETA_BINS.eta = cms.vdouble( 
+        -2.4, -2.3, -2.2, -2.1, -2.0, -1.9, -1.8, -1.7, 
+        -1.6, -1.5, -1.4, -1.3, -1.2, -1.1, -1.0, -0.9, 
+        -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 
+        0,
+        0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 
+        0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 
+        1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3, 2.4 )
 
 
 PT_BINS = cms.PSet(
@@ -406,8 +421,8 @@ if "_weight" in scenario:
 IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun 
 # ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS), ("pteta",PT_ETA_BINS) ]
-# ALLBINS = [ ("pteta",PT_ETA_BINS) ]
-ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
+ALLBINS = [ ("pteta",PT_ETA_BINS) ]
+# ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS) ]
 
 if len(args) > 1 and args[1] not in IDS: IDS += [ args[1] ]
