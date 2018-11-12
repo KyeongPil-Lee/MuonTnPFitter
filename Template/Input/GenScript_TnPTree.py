@@ -429,13 +429,13 @@ f.write(
 
 cwd=$(pwd)
 
-export SCRAM_ARCH=slc6_amd64_gcc530
-export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
-source $VO_CMS_SW_DIR/cmsset_default.sh
+# export SCRAM_ARCH=slc6_amd64_gcc530
+# export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
+# source $VO_CMS_SW_DIR/cmsset_default.sh
 
 # -- CMSSW enviornment -- #
-cd /cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/cmssw/CMSSW_8_0_13
-cmsenv
+# cd /cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/cmssw/CMSSW_8_0_13
+# cmsenv
 
 cd ${cwd}""")
 f.write( "\n" )
