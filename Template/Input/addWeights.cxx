@@ -37,7 +37,10 @@ void addWeights(TString treeName="tpTree", TString cut = "")
 
   // -- pair_genWeight: used as a weight to make tag_nVertices plot
   // -- reference: https://root.cern.ch/root/htmldoc/guides/users-guide/Trees.html#simple-analysis-using-ttreedraw
-  tMC.Draw("tag_nVertices>>hVtxMC(100,-0.5,99.5)", "pair_genWeight*("+cut+")"); 
+  if( cut == "" )
+    tMC.Draw("tag_nVertices>>hVtxMC(100,-0.5,99.5)", "pair_genWeight*(kTRUE)");
+  else
+    tMC.Draw("tag_nVertices>>hVtxMC(100,-0.5,99.5)", "pair_genWeight*("+cut+")");
   
 
   std::cout << "[addWeights]: Computing vertex weight vector ..." << std::endl;
