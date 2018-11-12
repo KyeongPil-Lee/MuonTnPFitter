@@ -18,6 +18,8 @@ public:
   Float_t abseta;
   Float_t phi;
   Float_t tag_pt;
+  Float_t tag_eta;
+  Float_t tag_phi;
   Float_t tag_abseta;
   Float_t tag_nVertices;
   Float_t relTkIso;
@@ -76,6 +78,12 @@ private:
     chain_->SetBranchStatus("tag_pt", 1);
     chain_->SetBranchAddress("tag_pt", &tag_pt);
 
+    chain_->SetBranchStatus("tag_eta", 1);
+    chain_->SetBranchAddress("tag_eta", &tag_eta);
+
+    chain_->SetBranchStatus("tag_phi", 1);
+    chain_->SetBranchAddress("tag_phi", &tag_phi);
+
     chain_->SetBranchStatus("tag_abseta", 1);
     chain_->SetBranchAddress("tag_abseta", &tag_abseta);
 
@@ -122,6 +130,8 @@ private:
     abseta = -999.0;
     phi = -999.0;
     tag_pt = -999.0;
+    tag_eta = -999.0;
+    tag_phi = -999.0;
     tag_abseta = -999.0;
     tag_nVertices = -999.0;
     relTkIso = -999.0;

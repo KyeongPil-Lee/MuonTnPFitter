@@ -7,6 +7,7 @@
 #include <TStopwatch.h>
 #include <TTimeStamp.h>
 #include <TString.h>
+#include <TMath.h>
 
 #include <iostream>
 #include <vector>
@@ -139,8 +140,8 @@ public:
 private:
   void Init()
   {
-    // isVerbose_ = kTRUE;
-    isVerbose_ = kFALSE;
+    isVerbose_ = kTRUE;
+    // isVerbose_ = kFALSE;
     SelectBinning();
 
     MakeHist( "pass", vec2D_tnpMassHist_pass_ );
@@ -202,7 +203,7 @@ private:
   {
     Int_t binNumber = -1;
 
-    Int_t nPtBin = (Int_t)vec_ptBinEdge_.size();
+    Int_t nPtBin = (Int_t)vec_ptBinEdge_.size() - 1;
     for(Int_t i=0; i<nPtBin; i++)
     {
       if( vec_ptBinEdge_[i] < pt && pt < vec_ptBinEdge_[i+1])
@@ -219,7 +220,7 @@ private:
   {
     Int_t binNumber = -1;
 
-    Int_t nEtaBin = (Int_t)vec_etaBinEdge_.size();
+    Int_t nEtaBin = (Int_t)vec_etaBinEdge_.size() - 1;
     for(Int_t i=0; i<nEtaBin; i++)
     {
       if( vec_etaBinEdge_[i] < eta && eta < vec_etaBinEdge_[i+1])
@@ -244,7 +245,8 @@ public:
   HistProducer()
   {
     vec_ntuplePath_.clear();
-    isVerbose_ = kFALSE;
+    // isVerbose_ = kFALSE;
+    isVerbose_ = kTRUE;
     isMC_ = kFALSE;
   }
 
@@ -291,7 +293,11 @@ public:
       ntuple->GetEvent(i_ev);
 
       Double_t weight = 1.0; // -- data;
-      if( isMC_ ) weight = ntuple->PUWeight * ntuple->GENWeight;
+      if( isMC_ )
+      {
+        Double_t genWeight_normalized = ntuple->GENWeight < 0 ? -1.0 : 1.0;
+        weight = ntuple->PUWeight * genWeight_normalized;
+      }
 
       if( isVerbose_ ) PrintEventInfo(i_ev, ntuple);
 
@@ -311,8 +317,17 @@ public:
 
       // -- trig
       Bool_t isPassingProbe_trig = kFALSE;
-      if( IsTnPCandidate_trig(ntuple, isPassingProbe_trig) )
-        hist_trig->Fill( isPassingProbe_trig, ntuple->pt, ntuple->eta, ntuple->mass, weight );
+      if( type_ == "DataBtoF" || type_ == "MCForBtoF" ) // -- dPhi cut should be applied
+      {
+        if( IsTnPCandidate_trig_dPhiCut(ntuple, isPassingProbe_trig) )
+          hist_trig->Fill( isPassingProbe_trig, ntuple->pt, ntuple->eta, ntuple->mass, weight );
+      }
+      else
+      {
+        if( IsTnPCandidate_trig(ntuple, isPassingProbe_trig) )
+          hist_trig->Fill( isPassingProbe_trig, ntuple->pt, ntuple->eta, ntuple->mass, weight );
+      }
+
     } // -- end of event iteration
 
     // -- save histograms
@@ -416,6 +431,32 @@ private:
     if( IsTag(ntuple) && ntuple->pair_deltaR > 0.3 && 
         ntuple->HighPt == 1 && 
         ntuple->relTkIso < 0.10)
+    {
+      isTnPCand = kTRUE;
+      if( ntuple->IsoMu24 == 1 || ntuple->IsoTkMu24 == 1 ) isPassingProbe = kTRUE;
+    }
+
+    return isTnPCand;
+  }
+
+  Bool_t IsTnPCandidate_trig_dPhiCut(TnPTreeHandle *ntuple, Bool_t& isPassingProbe)
+  {
+    Bool_t isTnPCand = kFALSE;
+
+    Double_t PI = TMath::Pi();
+    Double_t dPhi = fabs(ntuple->tag_phi - ntuple->phi);
+    if( dPhi >= PI )
+      dPhi = 2.0*PI - dPhi;
+
+    Double_t dPhiPrimeDeg = 999.0;
+    if( (ntuple->tag_eta > 0.9 && ntuple->eta > 0.9) || 
+        (ntuple->tag_eta < -0.9 && ntuple->eta < -0.9) ) // -- same endcap region
+      dPhiPrimeDeg = dPhi * (180.0 / PI );
+
+    if( IsTag(ntuple) && ntuple->pair_deltaR > 0.3 && 
+        ntuple->HighPt == 1 && 
+        ntuple->relTkIso < 0.10 &&
+        dPhiPrimeDeg > 70.0 ) // -- add dPhi > 70 degree if (tag, probe) are in same endcap region
     {
       isTnPCand = kTRUE;
       if( ntuple->IsoMu24 == 1 || ntuple->IsoTkMu24 == 1 ) isPassingProbe = kTRUE;
