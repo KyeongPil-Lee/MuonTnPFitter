@@ -26,4 +26,6 @@ eval `scramv1 runtime -sh`
 
 cd $MUONTNP_PATH
 
-echo "CMSSW is set ("$cmsswVersion")"
+# echo "CMSSW is set ("$cmsswVersion")"
+echo "CMSSW is set (CMSSW_9_2_0, customized TagProbeFitter to remove negative bins)"
+echo "   corresponding CMSSW path: /scratch/kplee/TagProbe/CMSSW/v01_Customization_RemoveNegBin/CMSSW_9_2_0/src"
