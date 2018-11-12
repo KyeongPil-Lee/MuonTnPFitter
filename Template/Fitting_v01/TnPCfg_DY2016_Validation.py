@@ -367,10 +367,10 @@ PT_BINS = cms.PSet(
     abseta = cms.vdouble(0.0, EtaMax),
 )
 
-if PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 22, 25, 27, 29, 32, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 45, 48, 50, 52, 55, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+# if PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 22, 25, 27, 29, 32, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 45, 48, 50, 52, 55, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 
 
 
