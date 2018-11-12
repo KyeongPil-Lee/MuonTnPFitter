@@ -340,7 +340,7 @@ if PassingProbe in List_eta2p1:
 
 PT_ETA_BINS = cms.PSet(
     pt = cms.vdouble( 0, 9999 ), # -- Will be set later -- #
-    abseta = cms.vdouble( 0.0, 0.9, 1.2, 2.1, 2.4 ),
+    # abseta = cms.vdouble( 0.0, 0.9, 1.2, 2.1, 2.4 ),
 )
 
 # -- refer to the binning used in ID+Iso case -- #
