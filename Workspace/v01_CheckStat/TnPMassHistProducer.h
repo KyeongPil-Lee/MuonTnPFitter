@@ -140,8 +140,8 @@ public:
 private:
   void Init()
   {
-    isVerbose_ = kTRUE;
-    // isVerbose_ = kFALSE;
+    // isVerbose_ = kTRUE;
+    isVerbose_ = kFALSE;
     SelectBinning();
 
     MakeHist( "pass", vec2D_tnpMassHist_pass_ );
@@ -245,8 +245,8 @@ public:
   HistProducer()
   {
     vec_ntuplePath_.clear();
-    // isVerbose_ = kFALSE;
-    isVerbose_ = kTRUE;
+    isVerbose_ = kFALSE;
+    // isVerbose_ = kTRUE;
     isMC_ = kFALSE;
   }
 
