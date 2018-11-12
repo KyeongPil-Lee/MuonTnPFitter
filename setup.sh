@@ -18,8 +18,12 @@ cmsswVersion=CMSSW_9_2_0
 
 
 source /cvmfs/cms.cern.ch/cmsset_default.sh
-cd /cvmfs/cms.cern.ch/$SCRAM_ARCH/cms/cmssw/$cmsswVersion
+# cd /cvmfs/cms.cern.ch/$SCRAM_ARCH/cms/cmssw/$cmsswVersion
+
+# -- muon server, customized PhysicsTools/TagAndProbe/src/TagProbeFitter.cc
+cd /scratch/kplee/TagProbe/CMSSW/v01_Customization_RemoveNegBin/CMSSW_9_2_0/src
 eval `scramv1 runtime -sh`
+
 cd $MUONTNP_PATH
 
 echo "CMSSW is set ("$cmsswVersion")"
