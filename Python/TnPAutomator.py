@@ -167,7 +167,13 @@ echo "TnP run skim is finished"
         if self.isMC: dataType = "mc_weight"
 
         for effType in self.effList:
-            cmd_eff = "cmsRun %s %s %s >&%s.log" % (self.configName, dataType, effType, effType)
+            cmd_eff = ""
+            if "," in effType:
+                effDef   = effType.split(",")[0]
+                systMode = effType.split(",")[1]
+                cmd_eff = "cmsRun %s %s %s %s >&%s_%s.log" % (self.configName, dataType, effDef, systMode, effType, systMode)
+            else:
+                cmd_eff = "cmsRun %s %s %s >&%s.log" % (self.configName, dataType, effType, effType)
             f_script.write(cmd_eff+"\n")
 
         f_script.write('\necho "TnP fitting: finished"\n')
