@@ -171,7 +171,7 @@ echo "TnP run skim is finished"
             if "," in effType:
                 effDef   = effType.split(",")[0]
                 systMode = effType.split(",")[1]
-                cmd_eff = "cmsRun %s %s %s %s >&%s_%s.log" % (self.configName, dataType, effDef, systMode, effType, systMode)
+                cmd_eff = "cmsRun %s %s %s %s >&%s_%s.log" % (self.configName, dataType, effDef, systMode, effDef, systMode)
             else:
                 cmd_eff = "cmsRun %s %s %s >&%s.log" % (self.configName, dataType, effType, effType)
             f_script.write(cmd_eff+"\n")
