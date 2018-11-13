@@ -22,6 +22,7 @@ public:
   Float_t tag_phi;
   Float_t tag_abseta;
   Float_t tag_nVertices;
+  Float_t tag_combRelIsoPF04dBeta;
   Float_t relTkIso;
 
   Int_t tag_IsoMu24;
@@ -90,6 +91,9 @@ private:
     chain_->SetBranchStatus("tag_nVertices", 1);
     chain_->SetBranchAddress("tag_nVertices", &tag_nVertices);
 
+    chain_->SetBranchStatus("tag_combRelIsoPF04dBeta", 1);
+    chain_->SetBranchAddress("tag_combRelIsoPF04dBeta", &tag_combRelIsoPF04dBeta);
+
     chain_->SetBranchStatus("relTkIso", 1);
     chain_->SetBranchAddress("relTkIso", &relTkIso);
 
@@ -134,6 +138,7 @@ private:
     tag_phi = -999.0;
     tag_abseta = -999.0;
     tag_nVertices = -999.0;
+    tag_combRelIsoPF04dBeta = -999.0;
     relTkIso = -999.0;
 
     tag_IsoMu24 = kFALSE;

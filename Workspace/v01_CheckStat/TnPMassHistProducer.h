@@ -368,6 +368,7 @@ private:
     printf("  tag_pt      = %lf\n", ntuple->tag_pt);
     printf("  tag_abseta  = %lf\n", ntuple->tag_abseta);
     printf("  tag_IsoMu24 = %d\n", ntuple->tag_IsoMu24);
+    printf("  tag_combRelIsoPF04dBeta = %lf\n", ntuple->tag_combRelIsoPF04dBeta);
 
     printf("[Probe info]\n");
     printf("  pt        = %lf\n", ntuple->pt);
@@ -448,10 +449,12 @@ private:
     if( dPhi >= PI )
       dPhi = 2.0*PI - dPhi;
 
-    Double_t dPhiPrimeDeg = 999.0;
+    Double_t dPhiPrimeDeg = -1.0;
     if( (ntuple->tag_eta > 0.9 && ntuple->eta > 0.9) || 
         (ntuple->tag_eta < -0.9 && ntuple->eta < -0.9) ) // -- same endcap region
       dPhiPrimeDeg = dPhi * (180.0 / PI );
+    else
+      dPhiPrimeDeg = 999.0; // -- if not, then set very high value -> not rejected by the cut
 
     if( IsTag(ntuple) && ntuple->pair_deltaR > 0.3 && 
         ntuple->HighPt == 1 && 
@@ -470,7 +473,8 @@ private:
     Bool_t isTag = kFALSE;
     if( ntuple->tag_IsoMu24 == 1 && 
         ntuple->tag_pt > 26.0 &&
-        ntuple->tag_abseta < 2.4 ) isTag = kTRUE;
+        ntuple->tag_abseta < 2.4 &&
+        ntuple->tag_combRelIsoPF04dBeta < 0.20 ) isTag = kTRUE;
 
     return isTag;
   }
