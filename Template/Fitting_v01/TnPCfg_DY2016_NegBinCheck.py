@@ -411,7 +411,7 @@ process.TnP_MuonID = Template.clone(
 #Add the variables for PU reweighting
 if "_weight" in scenario:
     process.TnP_MuonID.WeightVariable = cms.string("weight")
-    process.TnP_MuonID.Variables.weight = cms.vstring("weight","-10","10","")
+    process.TnP_MuonID.Variables.weight = cms.vstring("weight","-100000","100000", "")
 
 #IDS = [ "IsoMu20","Mu20","L2fL1sMu16L1f0L2Filtered10Q","IsoTkMu20","L1sMu16"]
 IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun 
