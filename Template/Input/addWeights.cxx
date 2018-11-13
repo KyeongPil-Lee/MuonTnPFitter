@@ -66,7 +66,7 @@ void addWeights(TString treeName="tpTree", TString cut = "")
   TString outFileName = (mcFileName.First(".") > 0 ? mcFileName(0,mcFileName.First(".")) : mcFileName)  + "_WithWeights.root";
 
   TFile *fOut = new TFile(outFileName, "RECREATE");
-  fOut->mkdir("muonEffs")->cd();
+  fOut->mkdir("tpTree")->cd();
   TTree *tOut = tMC.CloneTree(0);
   tOut->Branch("weight", &weight, "weight/F");
   int step = tMC.GetEntries()/100;
