@@ -57,7 +57,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 	CutDef = ""
 
 	if Type == "DY2016":
-		cutDef_tag   = "tag_IsoMu24==1 && fabs(tag_eta) < 2.4 && tag_pt > 24.9" # -- 24.9, not 25.9: for syst. unc.
+		cutDef_tag   = "tag_IsoMu24==1 && fabs(tag_eta) < 2.4 && tag_combRelIsoPF04dBeta > 0.09 && tag_pt > 24.9" # -- 24.9, not 25.9: for syst. unc.
 		cutDef_probe = "pt > 16.9"
 		CutDef = cutDef_tag + " && " + cutDef_probe
 
