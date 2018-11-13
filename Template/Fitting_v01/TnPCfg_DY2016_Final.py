@@ -493,7 +493,11 @@ for ID in IDS:
     for X,B in ALLBINS:
         # if len(args) > 2 and X not in args[2:]: continue
         #Add the information about ID and binning into the outputFileName
-        module = process.TnP_MuonID.clone(OutputFileName = cms.string("TnP_DY2016_%s_%s_%s.root" % (scenario, ID, X)))
+        outputFileName = ""
+        if systMode == "": outputFileName = "TnP_DY2016_%s_%s_%s.root" % (scenario, ID, X)
+        else:              outputFileName = "TnP_DY2016_%s_%s_%s_%s.root" % (scenario, ID, systMode, X)
+
+        module = process.TnP_MuonID.clone(OutputFileName = cms.string( outputFileName ))
         
         shape = Determine_Shape( PassingProbe, ProbeCondition)
 
