@@ -71,15 +71,26 @@ if sys.argv[0] == "cmsRun" and len(args) > 2:
         # -- details on fit shpaes: can be adjusted in Determine_Shape
         if PassingProbe == "HighPt": fitShape = "cpvPlusCMS"
         else:                        fitShape = "cpvPlusExpo2"
+        print "   -> fitShape = %s" % fitShape
 
     elif systMode == "tagLoose":
         minTagPt = 25.0
         maxTagIso = 0.30
+        print "   -> (minimum tag pT, maximum tag rel. isolation) = (%.2lf, %.2lf)" % (minTagPt, maxTagIso)
+
     elif systMode == "tagTight":
         minTagPt = 27.0
         maxTagIso = 0.10
-    elif systMode == "nMassBinUp":   nMassBin = 50
-    elif systMode == "nMassBinDown": nMassBin = 30
+        print "   -> (minimum tag pT, maximum tag rel. isolation) = (%.2lf, %.2lf)" % (minTagPt, maxTagIso)
+
+    elif systMode == "nMassBinUp":
+        nMassBin = 50
+        print "   -> # mass bin = %d" % nMassBin
+
+    elif systMode == "nMassBinDown":
+        nMassBin = 30
+        print "   -> # mass bin = %d" % nMassBin
+
     elif systMode == "massRangeUp":
         if PassingProbe == "RelTrkIso_010":
             minMass = 80.0
@@ -87,6 +98,8 @@ if sys.argv[0] == "cmsRun" and len(args) > 2:
         else:
             minMass = 75.0
             maxMass = 140.0
+        print "   -> mass range = (%.1f, %.1f)" % (minMass, maxMass)
+
     elif systMode == "massRangeDown":
         if PassingProbe == "RelTrkIso_010":
             minMass = 70.0
@@ -94,6 +107,8 @@ if sys.argv[0] == "cmsRun" and len(args) > 2:
         else:
             minMass = 65.0
             maxMass = 120.0
+        print "   -> mass range = (%.1f, %.1f)" % (minMass, maxMass)
+
     else:
         print "   -> it is not recognized. Need to check"
         sys.exit()
@@ -401,7 +416,7 @@ PT_ETA_BINS = cms.PSet(
 
 # -- will be set properly later
 if PassingProbe == "HighPt" or PassingProbe == "RelTrkIso_010" or PassingProbe == "IsoMu24_OR_IsoTkMu24":
-    PT_ETA_BINS.pt = cms.vdouble( 500, 1000 ) # -- only for test: have negative values
+    PT_ETA_BINS.pt = cms.vdouble( 40, 50 )
     PT_ETA_BINS.eta = cms.vdouble( 
         -2.4, -2.1, -1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 
         0, 
@@ -476,7 +491,7 @@ for ID in IDS:
     print "now doing ",ID
     if len(args) > 1 and ID != args[1]: continue
     for X,B in ALLBINS:
-        if len(args) > 2 and X not in args[2:]: continue
+        # if len(args) > 2 and X not in args[2:]: continue
         #Add the information about ID and binning into the outputFileName
         module = process.TnP_MuonID.clone(OutputFileName = cms.string("TnP_DY2016_%s_%s_%s.root" % (scenario, ID, X)))
         
