@@ -17,7 +17,7 @@ automator.skimType = "DY2016"
 automator.effList = [
 "HighPt",
 "RelTrkIso_010_from_HighPt",
-"IsoMu24_OR_IsoTkMu24_from_RelTrkIso_010_from_HighPt"]
+"IsoMu24_OR_IsoTkMu24_from_RelTrkIso_010_and_HighPt"]
 
 # automator.effList = [
 # "IsoMu24_from_Tight2012_and_dBeta_015",
