@@ -1,1 +1,8 @@
+# -- plots
 *.pdf
+
+# -- tex outputs
+*.tex
+*.log
+*.out
+*.aux
