@@ -11,8 +11,8 @@ automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_LegacyRerec
 automator.isMC = False
 
 automator.doRunSkim = True
-automator.firstRun = 272760
-automator.lastRun = 273017
+automator.firstRun = 273150
+automator.lastRun = 275376
 
 automator.doSkim = True
 automator.skimType = "DY2016"
