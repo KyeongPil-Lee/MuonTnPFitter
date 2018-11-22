@@ -410,17 +410,17 @@ if PassingProbe in List_eta2p1:
     EtaMax = 2.1
 
 PT_ETA_BINS = cms.PSet(
-    pt  = cms.vdouble( 0, 9999 ), # -- Will be set later -- #
-    eta = cms.vdouble( 0, 999 ),
+    pt  = cms.vdouble( 17, 28, 40, 50, 60, 120, 200 ), # -- Will be set later -- #
+    abseta = cms.vdouble( 0, 0.9, 1.2, 2.1, 2.4 ),
 )
 
 # -- will be set properly later
-if PassingProbe == "HighPt" or PassingProbe == "RelTrkIso_010" or PassingProbe == "IsoMu24_OR_IsoTkMu24":
-    PT_ETA_BINS.pt = cms.vdouble( 40, 50 )
-    PT_ETA_BINS.eta = cms.vdouble( 
-        -2.4, -2.1, -1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 
-        0, 
-        0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 )
+# if PassingProbe == "HighPt" or PassingProbe == "RelTrkIso_010" or PassingProbe == "IsoMu24_OR_IsoTkMu24":
+#     PT_ETA_BINS.pt = cms.vdouble( 40, 50 )
+#     PT_ETA_BINS.eta = cms.vdouble( 
+#         -2.4, -2.1, -1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 
+#         0, 
+#         0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 )
 
 
 PT_BINS = cms.PSet(
@@ -480,10 +480,7 @@ if "_weight" in scenario:
 
 #IDS = [ "IsoMu20","Mu20","L2fL1sMu16L1f0L2Filtered10Q","IsoTkMu20","L1sMu16"]
 IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun 
-# ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
-# ALLBINS = [ ("pt",PT_BINS), ("pteta",PT_ETA_BINS) ]
-# ALLBINS = [ ("pteta",PT_ETA_BINS) ]
-ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
+ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
 
 if len(args) > 1 and args[1] not in IDS: IDS += [ args[1] ]
 for ID in IDS:
