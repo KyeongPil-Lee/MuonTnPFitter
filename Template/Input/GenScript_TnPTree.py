@@ -37,6 +37,7 @@ def Set_Default( BranchList, _isMC ):
 	BranchList.append( "Medium2016" )
 	BranchList.append( "Tight2012" )
 	BranchList.append( "HighPt" )
+	BranchList.append( "TM" )
 
 	BranchList.append( "relTkIso" )
 	BranchList.append( "combRelIsoPF04dBeta" )
