@@ -186,28 +186,69 @@ class TnPInfoExtractor:
 
 
     def SaveGraph_2D(self, effDirObject, graphName_base):
-        i_absetabin = 0
-        list_graph = []
+        # -- is it pt - eta case or pt - abseta case?
+        etaType = ""
         for key in effDirObject.GetListOfKeys():
             canvasName = key.GetName()
-            if canvasName.startswith("pt_PLOT_abseta_bin"):
+            if canvasName.startswith("pt_PLOT_abseta_bin"): etaType = "abseta"
+            if canvasName.startswith("pt_PLOT_eta_bin"): etaType = "eta"
+
+        if etaType == "":
+            print "No eta type is found! ... it may not pt-eta or pt-abseta binning: not recognizable"
+            sys.exit()
+
+        list_graph = []
+
+        # -- pt - eta (or abseta) bin case, vs pT plots 
+        i_etabin = 0
+
+        for key in effDirObject.GetListOfKeys():
+            canvasName = key.GetName()
+            if canvasName.startswith("pt_PLOT_%s_bin" % etaType):
 
                 canvas = key.ReadObj()
                 graph = canvas.GetPrimitive("hxy_fit_eff").Clone()
 
                 name_before = canvas.GetName()
-                name_after  = graphName_base + "_abseta%d" % (i_absetabin)
+                name_after  = graphName_base + "_%s%d" % (etaType, i_etabin)
                 graph.SetName( name_after )
 
                 # -- Valiation: bin number is same?
-                if "pt_PLOT_abseta_bin%d" % i_absetabin not in canvasName:
+                if "pt_PLOT_%s_bin%d" % (etaType, i_etabin) not in canvasName:
                     print "[TnPInfoExtractor::SaveGraph_2D]"
-                    print "  i_absetabin = %d" % i_absetabin
+                    print "  i_etabin   = %d" % i_etabin
                     print "  canvasName = %s" % canvasName
                     print "    -> assigned bin number is not same with the true bin number!"
                     sys.exit()
 
-                i_absetabin += 1
+                i_etabin += 1
+
+                print "\tgraph: %s -> %s" % (name_before, name_after)
+                list_graph += [graph]
+
+        # -- pt - eta (or abseta) bin case, vs eta plots 
+        i_ptbin = 0
+        
+        for key in effDirObject.GetListOfKeys():
+            canvasName = key.GetName()
+            if canvasName.startswith("%s_PLOT_pt_bin" % etaType):
+
+                canvas = key.ReadObj()
+                graph = canvas.GetPrimitive("hxy_fit_eff").Clone()
+
+                name_before = canvas.GetName()
+                name_after  = graphName_base + "_pt%d" % (i_ptbin)
+                graph.SetName( name_after )
+
+                # -- Valiation: bin number is same?
+                if "%s_PLOT_pt_bin%d" % (etaType, i_ptbin) not in canvasName:
+                    print "[TnPInfoExtractor::SaveGraph_2D]"
+                    print "  i_ptbin    = %d" % i_ptbin
+                    print "  canvasName = %s" % canvasName
+                    print "    -> assigned bin number is not same with the true bin number!"
+                    sys.exit()
+
+                i_ptbin += 1
 
                 print "\tgraph: %s -> %s" % (name_before, name_after)
                 list_graph += [graph]
