@@ -39,7 +39,6 @@ class TnPAutomator:
         self.CreateWorkSpaceDir()
         self.GenerateSkimScript()
         self.GenerateTnPScript()
-        self.GenerateSummaryScript()
         self.GenerateMasterScript()
 
         print "+" * 100
@@ -179,32 +178,6 @@ echo "TnP run skim is finished"
         f_script.write('\necho "TnP fitting: finished"\n')
 
         f_script.close()
-
-    def GenerateSummaryScript(self):
-        dirPath = "%s/ResultROOTFiles_v01" % self.WSPath
-        scriptPath = "%s/%s" % (dirPath, self.summaryScriptName)
-
-        f_script = open(scriptPath, "w")
-
-        f_script.write(
-"""#!bin/bash
-
-mv ../Fitting_v01/*single.root ./SingleBin
-
-cd SingleBin
-python SaveCanvas_SingleBin.py
-
-cd ..
-source script_CollectROOTFiles.sh >&script_CollectROOTFiles.log
-source script_SummaryDir.sh
-
-echo "FitCanvases & efficiency graphs are produced!"
-
-""")
-
-        f_script.close()
-
-
 
     def GenerateMasterScript(self):
 
