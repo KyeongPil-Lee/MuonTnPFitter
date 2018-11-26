@@ -5,8 +5,6 @@ rm *.root
 rm -rf ROOTFiles
 rm -rf Summary
 rm *.log
-rm SingleBin/*.pdf
-rm SingleBin/*.root
 
 echo "+++++++++++++++++++++++++++++++++"
 echo "the directory is cleaned"
