@@ -417,9 +417,7 @@ PT_ETA_BINS = cms.PSet(
 if PassingProbe == "HighPt" or PassingProbe == "RelTrkIso_010" or PassingProbe == "IsoMu24_OR_IsoTkMu24":
     PT_ETA_BINS.pt = cms.vdouble( 17, 23, 28 )
     PT_ETA_BINS.eta = cms.vdouble( 
-        -2.4, -2.1, -1.8, -1.5, -1.2, -0.9, -0.6, -0.3, 
-        0, 
-        0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4 )
+        -2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4 )
 
 
 PT_BINS = cms.PSet(
