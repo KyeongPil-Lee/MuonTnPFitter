@@ -433,8 +433,9 @@ PT_BINS = cms.PSet(
 
 
 ETA_BINS = cms.PSet(
-	eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4),
-    pt = cms.vdouble( PtMin, 9999 ),
+    eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4),
+    # pt = cms.vdouble( PtMin, 9999 ),
+    pt = cms.vdouble( 17, 28 ),
 )
 if EtaMax == 2.1: ETA_BINS.eta = cms.vdouble(-2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1)
 
@@ -479,7 +480,7 @@ if "_weight" in scenario:
 IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun 
 # ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS), ("pteta",PT_ETA_BINS) ]
-ALLBINS = [ ("pteta",PT_ETA_BINS) ]
+ALLBINS = [ ("pteta",PT_ETA_BINS), ("eta",ETA_BINS) ]
 # ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS) ]
 
