@@ -265,7 +265,7 @@ class TnPInfoExtractor:
 
         elif "mc" in self.ROOTFileName:
             self.dataType = "MC"
-            graphName = Scenario + "_" + FileName.split("_mc_")[1:][0].split(".root")[:1][0]
+            graphName = self.dataType + "_" + self.ROOTFileName.split("_mc_")[1:][0].split(".root")[:1][0]
 
         return graphName
 
