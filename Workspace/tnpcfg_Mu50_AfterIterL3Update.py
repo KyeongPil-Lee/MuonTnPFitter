@@ -1,3 +1,4 @@
+import sys
 from Python.TnPAutomator import TnPAutomator
 
 automator = TnPAutomator()
