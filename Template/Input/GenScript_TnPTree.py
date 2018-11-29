@@ -37,6 +37,7 @@ def Set_Default( BranchList, _isMC ):
 	BranchList.append( "Medium2016" )
 	BranchList.append( "Tight2012" )
 	BranchList.append( "HighPt" )
+	BranchList.append( "TM" )
 
 	BranchList.append( "relTkIso" )
 	BranchList.append( "combRelIsoPF04dBeta" )
@@ -56,7 +57,15 @@ def Set_Default( BranchList, _isMC ):
 def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 	CutDef = ""
 
-	if Type == "Zg_ForID":
+	if Type == "DY2016":
+		cutDef_tag   = "tag_IsoMu24==1 && fabs(tag_eta) < 2.4 && tag_combRelIsoPF04dBeta > 0.09 && tag_pt > 24.9" # -- 24.9, not 25.9: for syst. unc.
+		cutDef_probe = "pt > 16.9"
+		CutDef = cutDef_tag + " && " + cutDef_probe
+
+		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
+		AddList.append(["IsoMu24==1 or IsoTkMu24==1;IsoMu24;IsoTkMu24", "IsoMu24_OR_IsoTkMu24", True])
+
+	elif Type == "Zg_ForID":
 		CutDef_TagOfficial = "tag_IsoMu24==1 && abs(tag_eta) < 2.4 && tag_pt > 24.9"
 		CutDef_ID = "pt > 9.9 && pair_probeMultiplicity_Pt10_M60140 == 1 && mass > 76.9 && mass < 130.5"
 		CutDef = CutDef_TagOfficial + " && " + CutDef_ID
@@ -421,13 +430,13 @@ f.write(
 
 cwd=$(pwd)
 
-export SCRAM_ARCH=slc6_amd64_gcc530
-export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
-source $VO_CMS_SW_DIR/cmsset_default.sh
+# export SCRAM_ARCH=slc6_amd64_gcc530
+# export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch
+# source $VO_CMS_SW_DIR/cmsset_default.sh
 
 # -- CMSSW enviornment -- #
-cd /cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/cmssw/CMSSW_8_0_13
-cmsenv
+# cd /cvmfs/cms.cern.ch/slc6_amd64_gcc530/cms/cmssw/CMSSW_8_0_13
+# cmsenv
 
 cd ${cwd}""")
 f.write( "\n" )

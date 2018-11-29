@@ -1,7 +1,7 @@
 from Python.TnPAutomator import TnPAutomator
 
 automator = TnPAutomator()
-automator.jobName = "Example"
+automator.jobName = sys.argv[0].split("tnpcfg_")[1].split(".py")[0]
 automator.configName = "TriggerEff.py"
 
 automator.inputTree = "/home/kplee/data1/TagProbe/101X/TnPTree_SingleMuon_Run2018Av123_Golden_315688_to_316271_DCSOnly_316272_to_316877.root"
