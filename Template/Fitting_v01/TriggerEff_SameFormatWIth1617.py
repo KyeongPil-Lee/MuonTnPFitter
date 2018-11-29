@@ -354,14 +354,15 @@ PT_BINS = cms.PSet(
 
 if PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 22, 25, 27, 29, 32, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 45, 48, 50, 52, 55, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 45, 48, 50, 52, 55, 60, 120, 200, 300, 500, 700, 1200 )
+elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble(0, 10, 15, 20, 25, 30, 40, 45, 48, 50, 52, 55, 60, 80, 120, 200, 500) # -- to be same with 2016/17 plots
 elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 
 
 
 ETA_BINS = cms.PSet(
-	eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4),
-    # eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4), # -- to be compared with 2016/2017
+	# eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4),
+    eta = cms.vdouble(-2.4, -2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1, 2.4), # -- to be compared with 2016/2017
     pt = cms.vdouble( PtMin, 9999 ),
 )
 if EtaMax == 2.1: ETA_BINS.eta = cms.vdouble(-2.1, -1.6, -1.2, -0.9, -0.3, -0.2, 0.2, 0.3, 0.9, 1.2, 1.6, 2.1)
@@ -408,7 +409,8 @@ IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun
 # ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS), ("pteta",PT_ETA_BINS) ]
 # ALLBINS = [ ("pteta",PT_ETA_BINS) ]
-ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
+# ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
+ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS) ]
 # ALLBINS = [ ("pt",PT_BINS) ]
 
 if len(args) > 1 and args[1] not in IDS: IDS += [ args[1] ]
