@@ -7,14 +7,15 @@ mkdir ${cwd}/ROOTFiles
 mkdir ${cwd}/FitCanvases
 
 cp ../Fitting_v01/*.root ./ROOTFiles
-cp SaveEfficiencyGraphs.py ./ROOTFiles
+cp GenerateFitCanvasesAndGraphs.py ./ROOTFiles
 
 cd ${cwd}/ROOTFiles
-python SaveEfficiencyGraphs.py
+python GenerateFitCanvasesAndGraphs.py -b
 
-# # -- move fit canvases -- #
+# # -- move fit canvases & html file -- #
 mv Data_* ${cwd}/FitCanvases
 mv MC_* ${cwd}/FitCanvases
+mv *.html ${cwd}/FitCanvases
 
 # -- Move root file with graphs -- #
 cp ROOTFile_EfficiencyGraphs.root ${cwd}/ROOTFile_EfficiencyGraphs.root
