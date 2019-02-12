@@ -132,3 +132,31 @@ root -l -b -q TnPEffPlots_Example.cxx
 
 
 
+## Appendix
+
+### nVtx reweighting (MC only)
+
+This step should be done before TnP fitting.
+
+How to add PU weights (by nVtx) in MC tree is:
+
+```
+root -l -b -q <input MC tree> <input Data tree> $MUONTNP_PATH/Template/Input/addWeights.cxx++
+
+# -- output: <input MC tree name + WithWeights>.root 
+# -- ex> input MC tree name = MCTree.root -> output = MCTree_WithWeights.root
+```
+
+* Example
+
+  ```
+  root -l -b -q \
+  /scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_Summer16_DYLL_M50_aMCNLO.root \
+  /scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_LegacyRereco07Aug17_SingleMuon_Run2016BtoF_GoldenJSON.root \
+  $MUONTNP_PATH/Template/Input/addWeights.cxx++ >&addWeights_BtoF.log
+  
+  mv /scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_Summer16_DYLL_M50_aMCNLO_WithWeights.root \
+  /scratch/kplee/TagProbe/TnPTree/2016/TnPTreeZ_Summer16_DYLL_M50_aMCNLO_weightedToBtoF.root
+  ```
+
+  
