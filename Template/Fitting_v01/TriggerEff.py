@@ -338,10 +338,10 @@ PT_ETA_BINS = cms.PSet(
     abseta = cms.vdouble( 0.0, 0.9, 1.2, 2.1, 2.4 ),
 )
 
-# -- refer to the binning used in ID+Iso case -- #
-# -- https://twiki.cern.ch/twiki/bin/viewauth/CMS/MuonTagAndProbeTreesRun2#Scale_factors_review -- #
-if PassingProbe in List_Pt27: PT_ETA_BINS.pt = cms.vdouble( 29, 32, 40, 50, 60, 120, 200, 1200 )
-elif PassingProbe in List_Pt50: PT_ETA_BINS.pt = cms.vdouble( 52, 55, 60, 120, 200, 1200 )
+# -- refer to the binning used in ID+Iso case except for the binning near pT threshold of the trigger -- #
+# -- https://its.cern.ch/jira/browse/CMSMUONS-28 -- #
+if   PassingProbe in List_Pt24: PT_ETA_BINS.pt = cms.vdouble( 26, 30, 40, 50, 60, 120, 200, 500, 700, 1200 )
+elif PassingProbe in List_Pt50: PT_ETA_BINS.pt = cms.vdouble( 52, 56, 60, 120, 200, 300, 500, 700, 1200 )
 
 if EtaMax == 2.1: PT_ETA_BINS.abseta = cms.vdouble(0.0, 0.9, 1.2, 2.1)
 
@@ -352,10 +352,12 @@ PT_BINS = cms.PSet(
     abseta = cms.vdouble(0.0, EtaMax),
 )
 
-if PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 22, 25, 27, 29, 32, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 45, 48, 50, 52, 55, 60, 120, 200, 300, 500, 700, 1200 )
-elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+if   PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 44, 48, 50, 52, 56, 60, 120, 200, 300, 500, 700, 1200 )
+
+# elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 22, 25, 27, 29, 32, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+
 
 
 
@@ -378,7 +380,7 @@ VTX_BINS  = cms.PSet(
 	tag_nVertices = cms.vdouble(
         0.5, 2.5, 4.5, 6.5, 8.5, 10.5, 12.5, 14.5, 16.5, 18.5, 
         20.5, 22.5, 24.5, 26.5, 28.5, 30.5, 32.5, 34.5, 36.5, 38.5, 
-        40.5, 42.5, 44.5, 46.5, 48.5, 50.5),
+        40.5, 42.5, 44.5, 46.5, 48.5, 50.5, 52.5, 54.5, 56.5, 58.5, 60.5),
     pt = cms.vdouble(  PtMin, 9999 ),
     abseta = cms.vdouble(  0.0, EtaMax),
 )
