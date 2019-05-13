@@ -81,7 +81,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		AddList.append(["Mu50 == 1 or HLT_TkMu50 == 1;Mu50;HLT_TkMu50", "Mu50_OR_TkMu50", True])
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
-		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "newHighPtID", True])
+		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
 
 		if "beforeL1Fix" in Type: # -- e.g. Paper_2016_Mu50_beforeL1Fix
 			AddList.append(["abs(tag_phi - phi) if abs(tag_phi - phi) < 3.1415926535 else 2*3.1415926535 - abs(tag_phi - phi);tag_eta;eta;phi;tag_phi", "pair_dPhi", False])
@@ -107,7 +107,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		AddList.append(["Mu50 == 1 or OldMu100 == 1 or TkMu100 == 1;Mu50;OldMu100;TkMu100", "Mu50_OR_OldMu100_OR_TkMu100", True])
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
-		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "newHighPtID", True])
+		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
 
 
 	elif Type == "Paper_2018_IsoMu24":
@@ -127,7 +127,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		AddList.append(["Mu50 == 1 or OldMu100 == 1 or TkMu100 == 1;Mu50;OldMu100;TkMu100", "Mu50_OR_OldMu100_OR_TkMu100", True])
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
-		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "newHighPtID", True])
+		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
 	
 
 	return CutDef
