@@ -65,6 +65,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 
 
 	elif Type == "2017_IsoMu27":
