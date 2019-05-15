@@ -427,8 +427,8 @@ for ID in IDS:
         DEN = B.clone(); num = ID; numstate = "pass"
 
         # -- tag condition for all binning -- //
-        DEN.tag_IsoMu24 = cms.vstring("pass")
-        DEN.tag_pt = cms.vdouble(26,9999)
+        DEN.tag_IsoMu27 = cms.vstring("pass")
+        DEN.tag_pt = cms.vdouble(29,9999)
         DEN.tag_abseta = cms.vdouble(0, 2.4)
 
         # -- dR condition between tag & probe muons for all binning (larger than 0.3) -- #
