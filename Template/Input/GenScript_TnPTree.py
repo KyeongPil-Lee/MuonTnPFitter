@@ -321,7 +321,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 
 
-	elif Type == "101X_Mu50_newHighPtID":
+	elif Type == "101X_Mu50_NewHighPtID":
 		CutDef_Tag = "tag_IsoMu24==1 && tag_pt > 25.9 && mass > 69.5 && mass < 130.5" # -- tag condition -- #
 		CutDef_Probe = "CutBasedIdGlobalHighPt_new > 0.5 && relTkIso < 0.10"
 		CutDef = CutDef_Tag + " && " + CutDef_Probe
