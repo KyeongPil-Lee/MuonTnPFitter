@@ -89,14 +89,13 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 			AddList.append(["pair_dPhiPrimeDeg > 70;pair_dPhiPrimeDeg", "pair_dPhiSafe", True])
 
 
-	# -- IsoMu27 is not supported by TriggerEff.py yet! ... it should not be used until it is updated (e.g. binning)
-	# elif Type == "Paper_2017_IsoMu27": # -- NOT IsoMu24!
-	# 	CutDef_Tag = "tag_IsoMu27==1 && tag_pt > 28.9 && mass > 69.5 && mass < 130.5" # -- tag condition: IsoMu27 -- #
-	# 	CutDef_Probe = "Tight2012 && combRelIsoPF04dBeta < 0.15"
-	# 	CutDef = CutDef_Tag + " && " + CutDef_Probe
+	elif Type == "Paper_2017_IsoMu27": # -- NOT IsoMu24!
+		CutDef_Tag = "tag_IsoMu27==1 && tag_pt > 28.9 && mass > 69.5 && mass < 130.5" # -- tag condition: IsoMu27 -- #
+		CutDef_Probe = "Tight2012 && combRelIsoPF04dBeta < 0.15"
+		CutDef = CutDef_Tag + " && " + CutDef_Probe
 
-	# 	AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
-	# 	AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
+		AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 
 
 	elif Type == "Paper_2017_Mu50":
