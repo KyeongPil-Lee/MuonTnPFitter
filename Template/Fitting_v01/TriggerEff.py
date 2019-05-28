@@ -340,7 +340,8 @@ PT_ETA_BINS = cms.PSet(
 
 # -- refer to the binning used in ID+Iso case except for the binning near pT threshold of the trigger -- #
 # -- https://its.cern.ch/jira/browse/CMSMUONS-28 -- #
-if   PassingProbe in List_Pt24: PT_ETA_BINS.pt = cms.vdouble( 26, 30, 40, 50, 60, 120, 200, 500, 700, 1200 )
+if   PassingProbe in List_Pt22: PT_ETA_BINS.pt = cms.vdouble( 22, 25, 30, 40, 50, 60, 120, 200, 500, 700, 1200 )
+elif PassingProbe in List_Pt24: PT_ETA_BINS.pt = cms.vdouble( 26, 30, 40, 50, 60, 120, 200, 500, 700, 1200 )
 elif PassingProbe in List_Pt50: PT_ETA_BINS.pt = cms.vdouble( 52, 56, 60, 120, 200, 300, 500, 700, 1200 )
 
 if EtaMax == 2.1: PT_ETA_BINS.abseta = cms.vdouble(0.0, 0.9, 1.2, 2.1)
@@ -352,7 +353,8 @@ PT_BINS = cms.PSet(
     abseta = cms.vdouble(0.0, EtaMax),
 )
 
-if   PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+if   PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 18, 20, 22, 24, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+elif PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 44, 48, 50, 52, 56, 60, 120, 200, 300, 500, 700, 1200 )
 
 # elif PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 17, 20, 22, 24, 27, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
