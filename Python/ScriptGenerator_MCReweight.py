@@ -20,6 +20,9 @@ class ScriptGenerator:
             f_script.write(CMD)
             f_script.write("\n")
 
+        print "%s is generated" % self.scriptName
+        f_script.close()
+
         # -- clear
         self.List_CMD = []
 
