@@ -2,7 +2,7 @@ from Python.ScriptGenerator_MCReweight import ScriptGenerator
 
 generator = ScriptGenerator()
 
-generator.reweightCode = "$MUONTNP_PATH/Template/Input/addWeights.cxx++"
+generator.reweightCode = "$MUONTNP_PATH/Template/Input/addWeights.cxx"
 
 # -- path: must be absolute path
 generator.scriptName = "script_Reweight_94X.sh"
