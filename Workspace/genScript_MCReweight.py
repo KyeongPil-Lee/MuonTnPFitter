@@ -15,7 +15,7 @@ generator.Generate()
 generator.scriptName = "script_Reweight_106X.sh"
 generator.inputData = "/scratch/kplee/TagProbe/TnPTree/2017/TnPTreeZ_17Nov2017_SingleMuon_Run2017All_Incomplete_20190527.root"
 generator.inputMC   = "/scratch/kplee/TagProbe/TnPTree/2019/TnPTreeZ_1060pre2_RelValZMM.root"
-generator.outputMC  = "/scratch/kplee/TagProbe/TnPTree/2019/TnPTreeZ_1060pre2_RelValZMM.root_Reweighted.root"
+generator.outputMC  = "/scratch/kplee/TagProbe/TnPTree/2019/TnPTreeZ_1060pre2_RelValZMM_Reweighted.root"
 generator.Register()
 generator.Generate()
 
