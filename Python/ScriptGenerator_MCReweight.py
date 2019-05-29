@@ -21,6 +21,8 @@ class ScriptGenerator:
             f_script.write("\n")
 
         print "%s is generated" % self.scriptName
+        print "source %s >&%s.log" % (self.scriptName, self.scriptName.split(".sh")[0])
+
         f_script.close()
 
         # -- clear
@@ -33,13 +35,12 @@ class ScriptGenerator:
 
     def MakeCMD(self):
         inputMC_noExt = self.inputMC.split(".root")[0]
-        inputMC_type = self.inputMC.split(".root")[0].split("/")[-1]
 
         CMD = """
 root -l -b -q \\
 {inputMC_} \\
 {inputData_} \\
-{reweightCode_}++ >&addWeights_{inputMC_type_}.log
+{reweightCode_}++
 
 mv {inputMC_noExt_}_WithWeights.root \\
 {outputMC_}
