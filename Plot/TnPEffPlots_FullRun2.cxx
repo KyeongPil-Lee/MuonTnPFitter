@@ -255,20 +255,32 @@ private:
 
 
     canvasRatio->Latex_CMSPre();
-    canvasRatio->RegisterLatex( 0.62, 0.96, "#font[42]{#scale[0.4]{35.9 fb^{-1} (13 TeV, 2016), 41.5 fb^{-1} (13 TeV, 2017), 59.7 fb^{-1} (13 TeV, 2018)}}");
+    // canvasRatio->RegisterLatex( 0.44, 0.96, "#font[42]{#scale[0.35]{35.9 fb^{-1} (13 TeV, 2016), 41.5 fb^{-1} (13 TeV, 2017), 59.7 fb^{-1} (13 TeV, 2018)}}");
+    canvasRatio->RegisterLatex( 0.44, 0.96, "#font[42]{#scale[0.45]{35.9 fb^{-1} (2016), 41.5 fb^{-1} (2017), 59.7 fb^{-1} (2018) (13 TeV)}}");
 
-    TString triggerInfo = "";
-    if( effType_.Contains("Mu50_OR_OldMu100_OR_TkMu100_from") ) triggerInfo = "Non-isolated single #mu trigger with p_{T} > 50 GeV";
-    if( effType_.Contains("IsoMu24_from") )                     triggerInfo = "Isolated single #mu trigger with p_{T} > 24 GeV (27 GeV for 2017)";
-    if( effType_.Contains("L1SingleMu22_from") )                triggerInfo = "L1 single #mu trigger with p_{T} > 22 GeV";
-        canvasRatio->RegisterLatex( 0.16, 0.91, "#font[42]{#scale[0.7]{"+triggerInfo+"}}");
+    // TString triggerInfo = "";
+    // if( effType_.Contains("Mu50_OR_OldMu100_OR_TkMu100_from") ) triggerInfo = "Non-isolated single #mu trigger with p_{T} > 50 GeV";
+    // if( effType_.Contains("IsoMu24_from") )                     triggerInfo = "Isolated single #mu trigger with p_{T} > 24 GeV (27 GeV for 2017)";
+    // if( effType_.Contains("L1SingleMu22_from") )                triggerInfo = "L1 single #mu trigger with p_{T} > 22 GeV";
+    //     canvasRatio->RegisterLatex( 0.16, 0.91, "#font[42]{#scale[0.7]{"+triggerInfo+"}}");
+
+    if( effType_.Contains("Mu50_OR_OldMu100_OR_TkMu100_from") ) 
+      canvasRatio->RegisterLatex( 0.16, 0.91, "#font[42]{#scale[0.7]{Non-isolated single #mu trigger with p_{T} > 50 GeV}}");
+    if( effType_.Contains("IsoMu24_from") )
+      canvasRatio->RegisterLatex( 0.16, 0.91, "#font[42]{#scale[0.7]{Isolated single #mu trigger with p_{T} > 24 GeV} #scale[0.55]{(27 GeV for 2017)}}");
+    if( effType_.Contains("L1SingleMu22_from") )
+      canvasRatio->RegisterLatex( 0.16, 0.91, "#font[42]{#scale[0.7]{L1 single #mu trigger with p_{T} > 22 GeV}}");
+
 
     if( var != "pt" )
     {
-      TString ptInfo = TString::Format("p_{T} > %.0lf GeV", ptMin + 2.0);
-      if( ptMin == 24 ) ptInfo = TString::Format("p_{T} > %.0lf GeV (29 GeV for 2017)", ptMin + 2.0);
-
-      canvasRatio->RegisterLatex( 0.16, 0.865, "#font[42]{#scale[0.7]{"+ptInfo+"}}");
+      if( ptMin == 24 ) 
+        canvasRatio->RegisterLatex( 0.16, 0.865, "#font[42]{#scale[0.7]{p_{T} > 26 GeV} #scale[0.55]{(29 GeV for 2017)}}");
+      else
+      {
+        TString ptInfo = TString::Format("p_{T} > %.0lf GeV", ptMin + 2.0);
+        canvasRatio->RegisterLatex( 0.16, 0.865, "#font[42]{#scale[0.7]{"+ptInfo+"}}");
+      }
     }
 
     canvasRatio->Draw();
