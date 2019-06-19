@@ -6,6 +6,7 @@ class TnPAutomator:
         self.configName = ""
         self.inputTree = ""
         self.isMC = ""
+        self.noMCWeight = False
 
         self.doSkim = False
         self.skimType = ""
@@ -163,7 +164,8 @@ echo "TnP run skim is finished"
         f_script.write("#!bin/bash\n\n")
 
         dataType = "data_25ns"
-        if self.isMC: dataType = "mc_weight"
+        if self.isMC:                     dataType = "mc_weight"
+        if self.isMC and self.noMCWeight: dataType = "mc"
 
         for effType in self.effList:
             cmd_eff = ""
