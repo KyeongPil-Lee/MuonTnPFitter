@@ -35,6 +35,7 @@ class ScriptGenerator:
 
     def MakeCMD(self):
         inputMC_noExt = self.inputMC.split(".root")[0]
+        inputMC_type = self.inputMC.split(".root")[0].split("/")[-1]
 
         CMD = """
 root -l -b -q \\
@@ -44,6 +45,8 @@ root -l -b -q \\
 
 mv {inputMC_noExt_}_WithWeights.root \\
 {outputMC_}
+
+mv nVtx.png nVtx_{inputMC_type_}.png
 
 echo "Reweight of {inputMC_}: finished"
 echo "  -> output file = {outputMC_}"
