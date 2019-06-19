@@ -407,6 +407,7 @@ process.TnP_MuonID = Template.clone(
 if "_weight" in scenario:
     process.TnP_MuonID.WeightVariable = cms.string("weight")
     process.TnP_MuonID.Variables.weight = cms.vstring("weight","-10","10","")
+    print "WARNING: the range of the weight recognized: -10 < weight < 10 -> avoid an instability of the fit due to a few events with too large weights"
 
 #IDS = [ "IsoMu20","Mu20","L2fL1sMu16L1f0L2Filtered10Q","IsoTkMu20","L1sMu16"]
 IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun 
