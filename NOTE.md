@@ -38,6 +38,25 @@ Binning
 
 
 
+### 2018 data
+
+List of triggers
+
+* IsoMu24 over L1
+* Mu50 over L1
+
+
+
+Amount of the data: run ≥  324315 (5 /fb)
+
+- To be consistent with the result from the cut & count results
+
+
+
+Binning
+
+* Same with 2016 case
+
 
 
 ## Check 2
