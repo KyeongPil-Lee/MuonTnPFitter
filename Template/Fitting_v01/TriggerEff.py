@@ -316,7 +316,7 @@ List_Pt22 = ["IsoMu22_OR_IsoTkMu22", "L1_IsoMu24", "L1_IsoMu27", "L1SingleMu22"]
 List_Pt24 = ["IsoMu24_OR_IsoTkMu24", "IsoMu24", "IsoTkMu24", "L2_IsoMu24", "L3_IsoMu24", "IsoF_IsoMu24", "TkMuF_IsoTkMu24", "IsoF_IsoTkMu24", "L3_IsoMu24_OR_TkMuF_IsoTkMu24", "IsoF_IsoMu24_OR_IsoF_IsoTkMu24"]
 List_Pt27 = ["IsoMu27", "IsoTkMu27", "IsoMu27_OR_IsoTkMu27", "L2_IsoMu27", "L3_IsoMu27", "IsoF_IsoMu27"]
 List_Pt45 = ["Mu45_eta2p1", "L1_Mu45_eta2p1", "L2_Mu45_eta2p1"]
-List_Pt50 = ["Mu50", "HLT_TkMu50", "Mu50_OR_TkMu50", "L1_Mu50", "L2_Mu50", "Mu50_OR_OldMu100_OR_TkMu100"]
+List_Pt50 = ["Mu50", "TkMu50", "HLT_TkMu50", "Mu50_OR_TkMu50", "L1_Mu50", "L2_Mu50", "Mu50_OR_OldMu100_OR_TkMu100"]
 List_Pt100 = ["OldMu100", "TkMu100", "OldMu100_OR_TkMu100", "Mu50_OR_TkMu100", "Mu50_OR_OldMu100"]
 List_Else = ["RelTrkIso_010", "Loose", "HighPt"]
 if PassingProbe in List_Pt20: PtMin = 20+2
@@ -355,6 +355,7 @@ PT_BINS = cms.PSet(
 )
 
 if   PassingProbe in List_Pt22: PT_BINS.pt = cms.vdouble( 2, 16, 20, 22, 24, 28, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
+# elif PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 elif PassingProbe in List_Pt24: PT_BINS.pt = cms.vdouble( 2, 18, 22, 24, 26, 30, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 elif PassingProbe in List_Pt27: PT_BINS.pt = cms.vdouble( 2, 21, 25, 27, 29, 33, 40, 50, 60, 120, 200, 300, 500, 700, 1200 )
 elif PassingProbe in List_Pt50: PT_BINS.pt = cms.vdouble( 2, 44, 48, 50, 52, 56, 60, 120, 200, 300, 500, 700, 1200 )
