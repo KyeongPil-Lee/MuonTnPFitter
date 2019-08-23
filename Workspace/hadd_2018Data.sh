@@ -1,0 +1,12 @@
+#!/bin/bash
+
+hadd /scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018All_Incomplete_20190702.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Av2_GoldenJSON_Incomplete_20190607_Final.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Av2_GoldenJSON_notFinishedLumis_Incomplete_20190702_final.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Bv1_GoldenJSON.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Cv1_GoldenJSON_Incomplete_20190607_Final.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Cv1_GoldenJSON_notFinishedLumis_Incomplete_20190702_final.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Dv1_GoldenJSON_Incomplete_20190607_Final.root \
+/scratch/kplee/TagProbe/TnPTree/2018/TnPTreeZ_17Sep2018_SingleMuon_Run2018Dv1_GoldenJSON_notFinishedLumis_Incomplete_20190702_final.root
+
+echo "finished"
