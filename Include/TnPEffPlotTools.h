@@ -81,6 +81,28 @@ TString LatexEffInfo( TString effType )
   if( effType == "Mu50_OR_TkMu50_from_L1SingleMu22_and_HighPt_and_RelTrkIso_010" )
     info = "Mu50 || TkMu50 / L1(SingleMu22)";
 
+
+  // -- new high pT ID
+  // -- Mu50
+  if( effType == "Mu50_from_NewHighPtID_and_RelTrkIso_010" )
+    info = "Mu50 / High-P_{T} ID + TrkIso/P_{T} < 0.10";
+  if( effType == "Mu50_from_L1SingleMu22_and_NewHighPtID_and_RelTrkIso_010" )
+    info = "Mu50 / L1(SingleMu22)";
+
+
+  // -- TkMu50
+  if( effType == "TkMu50_from_NewHighPtID_and_RelTrkIso_010" )
+    info = "TkMu50 / High-P_{T} ID + TrkIso/P_{T} < 0.10";
+  if( effType == "TkMu50_from_L1SingleMu22_and_NewHighPtID_and_RelTrkIso_010" )
+    info = "TkMu50 / L1(SingleMu22)";
+
+
+  // -- Mu50 || TkMu50
+  if( effType == "Mu50_OR_TkMu50_from_NewHighPtID_and_RelTrkIso_010" )
+    info = "Mu50 || TkMu50 / High-p_{T} ID + TrkIso/p_{T} < 0.10";
+  if( effType == "Mu50_OR_TkMu50_from_L1SingleMu22_and_NewHighPtID_and_RelTrkIso_010" )
+    info = "Mu50 || TkMu50 / L1(SingleMu22)";
+
   if( info == "" )
     cout << "[TnPPlot::LatexEffInfo] No corresponding info is found ... empty string will be returned" << endl;
 
