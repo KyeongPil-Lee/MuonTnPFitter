@@ -25,6 +25,13 @@ def Set_Default( BranchList, _isMC ):
 	BranchList.append( "l1drByQ" )
 	BranchList.append( "l1qByQ" )
 
+	BranchList.append( "l2pt" )
+	BranchList.append( "l2eta" )
+	BranchList.append( "l2dr" )
+
+	BranchList.append( "l3pt" )
+	BranchList.append( "l3dr" )
+
 	BranchList.append( "IsoMu*" )
 	BranchList.append( "IsoTkMu*" )
 	BranchList.append( "OldMu*" )
@@ -94,6 +101,18 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		CutDef_Probe = "Tight2012 && combRelIsoPF04dBeta < 0.15"
 		CutDef = CutDef_Tag + " && " + CutDef_Probe
 
+		AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
+
+
+	# -- for cut & count, L3/L1 test
+	elif Type == "L3_2016_count":
+		CutDef_Tag = "tag_IsoMu24==1 && tag_pt > 25.9 && mass > 81.0 && mass < 101.0" # -- tag condition. narrow mass range for cut & count -- #
+		CutDef_Probe = "Tight2012 && combRelIsoPF04dBeta < 0.15"
+		CutDef = CutDef_Tag + " && " + CutDef_Probe
+
+		AddList.append(["l3dr < 0.1;l3dr", "L3Muon", True])
+		AddList.append(["IsoMu24==1 or IsoTkMu24==1;IsoMu24;IsoTkMu24", "IsoMu24_OR_IsoTkMu24", True])
 		AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
 		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 
