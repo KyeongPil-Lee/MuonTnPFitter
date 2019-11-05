@@ -10,7 +10,7 @@ automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2017/v01_unprescaledIsoMu
 automator.isMC = False
 
 automator.doSkim = True
-automator.skimType = "Paper_2017_Mu50_count"
+automator.skimType = "Paper_2018_Mu50_count"
 
 automator.doRunSkim = False
 automator.firstRun = 0
