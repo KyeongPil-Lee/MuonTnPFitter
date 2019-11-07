@@ -5,7 +5,7 @@ automator = TnPAutomator()
 automator.jobName = sys.argv[0].split("tnpcfg_")[1].split(".py")[0]
 automator.configName = "TriggerEff_count.py"
 
-automator.inputTree = "ssh/scratch/kplee/TagProbe/MuonTnPFitter/v06_SingleMuEffForPaper/Workspace/2017_IsoMu24_v01/Input/Input_Final.root"
+automator.inputTree = "/scratch/kplee/TagProbe/MuonTnPFitter/v06_SingleMuEffForPaper/Workspace/2017_IsoMu24_v01/Input/Input_Final.root"
 automator.isMC = False
 
 automator.doSkim = True
