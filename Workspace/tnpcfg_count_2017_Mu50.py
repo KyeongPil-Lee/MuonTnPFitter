@@ -6,7 +6,7 @@ automator.jobName = sys.argv[0].split("tnpcfg_")[1].split(".py")[0]
 automator.configName = "TriggerEff_count.py"
 
 # -- to use IsoMu24 as a tag selection, use unprescaled_IsoMu24 data
-automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2017/v01_unprescaledIsoMu24/TnPTreeZ_17Nov2017_SingleMuon_Run2017CEFv1_GoldenJSON_UnpreIsoMu24_Incomplete_20190701.root"
+automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2017/v01_unprescaledIsoMu24/TnPTreeZ_UnpreIsoMu24_17Nov2017_SingleMuon_Run2017All_GoldenJSON.root"
 automator.isMC = False
 
 automator.doSkim = True
