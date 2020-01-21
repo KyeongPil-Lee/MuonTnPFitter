@@ -5,7 +5,7 @@ automator = TnPAutomator()
 automator.jobName = sys.argv[0].split("tnpcfg_")[1].split(".py")[0]
 automator.configName = "TriggerEff.py"
 
-automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2019/RelVal_11_1_0_pre/TnPTreeZ_RelValZMM_14_106X.root"
+automator.inputTree = "/scratch/kplee/TagProbe/TnPTree/2019/RelVal_11_1_0_pre/TnPTreeZ_RelValZMM_14_110X_pre12.root"
 automator.isMC = True
 
 automator.doSkim = True
