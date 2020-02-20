@@ -72,7 +72,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		CutDef = CutDef_Tag + " && " + CutDef_Probe
 
 		AddList.append(["IsoMu24 == 1 or IsoTkMu24 == 1;IsoMu24;IsoTkMu24", "IsoMu24_OR_IsoTkMu24", True])
-		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1_SingleMu22", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 		AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
 
 		# -- for further investigation on the isolation (e.g. Iso./L3)
@@ -88,7 +88,7 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		CutDef = CutDef_Tag + " && " + CutDef_Probe
 
 		AddList.append(["Mu50 == 1 or HLT_TkMu50 == 1;Mu50;HLT_TkMu50", "Mu50_OR_TkMu50", True])
-		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1_SingleMu22", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
 		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 
