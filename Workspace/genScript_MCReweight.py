@@ -19,4 +19,11 @@ generator.outputMC  = "/scratch/kplee/TagProbe/TnPTree/2020/TnPTreeZ_RelValZMM_1
 generator.Register()
 generator.Generate()
 
+generator.scriptName = "script_Reweight_106X_postFVP.sh"
+generator.inputData = "/scratch/kplee/TagProbe/TnPTree/2016/MuonTriggerPaper/TnPTreeZ_07Aug17_SingleMuon_Run2016All_afterL1Fix.root"
+generator.inputMC   = "/scratch/kplee/TagProbe/TnPTree/2020/TnPTreeZ_RelValZMM_13UP16_UL16_HighStat_postFVP.root"
+generator.outputMC  = "/scratch/kplee/TagProbe/TnPTree/2020/TnPTreeZ_RelValZMM_13UP16_UL16_HighStat_postFVP_reweighted_afterL1Fix.root"
+generator.Register()
+generator.Generate()
+
 
