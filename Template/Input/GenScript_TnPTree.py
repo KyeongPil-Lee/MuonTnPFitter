@@ -92,6 +92,27 @@ def Set_List_Cuts( Type, isMC, BranchList, AddList ):
 		AddList.append(["CutBasedIdGlobalHighPt_new > 0.5;CutBasedIdGlobalHighPt_new", "NewHighPtID", True])
 		AddList.append(["relTkIso < 0.10;relTkIso", "RelTrkIso_010", True])
 
+	elif Type == "2016_L2":
+		CutDef_Tag = "tag_IsoMu24==1 && tag_pt > 25.9 && mass > 69.5 && mass < 130.5" # -- tag condition -- #
+		CutDef_Probe = "Tight2012 && combRelIsoPF04dBeta < 0.15" # -- offline selection -- #
+		CutDef = CutDef_Tag + " && " + CutDef_Probe
+
+		BranchList.append( "l2pt" )
+		BranchList.append( "l2eta" )
+		BranchList.append( "l2dr" )
+
+		AddList.append(["IsoMu24 == 1 or IsoTkMu24 == 1;IsoMu24;IsoTkMu24", "IsoMu24_OR_IsoTkMu24", True])
+		AddList.append(["l1ptByQ >= 22 and l1qByQ == 12 and l1drByQ < 0.3;l1ptByQ;l1qByQ;l1drByQ", "L1SingleMu22", True])
+		AddList.append(["l2pt >= 10 and l2dr < 0.3;l2pt;l2dr", "L2Mu10", True])
+		AddList.append(["combRelIsoPF04dBeta < 0.15;combRelIsoPF04dBeta", "dBeta_015", True])
+
+		# -- for further investigation on the isolation (e.g. Iso./L3)
+		# BranchList.append( "hltL3fL1sMu22L1f0L2f10QL3Filtered24Q" )
+		# BranchList.append( "hltL3fL1sMu22f0TkFiltered24Q" )
+		# AddList.append(["hltL3fL1sMu22L1f0L2f10QL3Filtered24Q == 1;hltL3fL1sMu22L1f0L2f10QL3Filtered24Q", "L3_IsoMu24", True])
+		# AddList.append(["hltL3fL1sMu22f0TkFiltered24Q == 1;hltL3fL1sMu22f0TkFiltered24Q", "TkMuF_IsoTkMu24", True])
+		# AddList.append(["L3_IsoMu24 == 1 or TkMuF_IsoTkMu24 == 1;L3_IsoMu24;TkMuF_IsoTkMu24", "L3_OR_TkMuF_IsoMu24", True])
+
 	return CutDef
 
 	# elif Type == "asdf":
