@@ -312,7 +312,7 @@ print "\nTemplate.Categories: \n", Template.Categories
 
 PtMin = 9999
 List_Pt20 = ["IsoMu20_OR_IsoTkMu20", "IsoMu20", "IsoTkMu20", "L1_IsoMu20", "L2_IsoMu20", "L3_IsoMu20", "IsoF_IsoMu20", "TkMuF_IsoTkMu20", "IsoF_IsoTkMu20", "Tight2012", "RelTrkIso_010", "L3_IsoMu20_OR_TkMuF_IsoTkMu20"]
-List_Pt22 = ["IsoMu22_OR_IsoTkMu22", "L1_IsoMu24", "L1_IsoMu27", "L1SingleMu22"]
+List_Pt22 = ["IsoMu22_OR_IsoTkMu22", "L1_IsoMu24", "L1_IsoMu27", "L1SingleMu22", "L2Mu10"]
 List_Pt24 = ["IsoMu24_OR_IsoTkMu24", "IsoMu24", "IsoTkMu24", "L2_IsoMu24", "L3_IsoMu24", "IsoF_IsoMu24", "TkMuF_IsoTkMu24", "IsoF_IsoTkMu24", "L3_IsoMu24_OR_TkMuF_IsoTkMu24", "IsoF_IsoMu24_OR_IsoF_IsoTkMu24"]
 List_Pt27 = ["IsoMu27", "IsoTkMu27", "IsoMu27_OR_IsoTkMu27", "L2_IsoMu27", "L3_IsoMu27", "IsoF_IsoMu27"]
 List_Pt45 = ["Mu45_eta2p1", "L1_Mu45_eta2p1", "L2_Mu45_eta2p1"]
