@@ -18,7 +18,7 @@ automator.lastRun = 999999
 automator.effList = [
 "IsoMu24_from_Tight2012_and_dBeta_015",
 "IsoMu24_from_L1SingleMu22_and_Tight2012_and_dBeta_015",
-"L1SingleMu22_and_Tight2012_and_dBeta_015"]
+"L1SingleMu22_from_Tight2012_and_dBeta_015"]
 
 # automator.effList = [
 # "IsoMu24_from_Tight2012_and_dBeta_015",
