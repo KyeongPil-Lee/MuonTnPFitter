@@ -619,7 +619,7 @@ public:
     graphInfos_.push_back( graphInfo );
   }
 
-  void Draw( TString drawOp = "EPSAME" )
+  void Draw( TString drawOp = "EPSAME", TString saveOp = ".pdf" )
   {
     if( !drawOp.Contains("SAME") ) drawOp = drawOp + "SAME";
 
@@ -663,7 +663,7 @@ public:
 
     DrawLatexAll();
 
-    c_->SaveAs(".pdf");
+    c_->SaveAs(saveOp);
   }
 };
 
@@ -671,6 +671,9 @@ class GraphCanvaswRatio: public GraphCanvas
 {
 public:
   vector<GraphInfo> graphInfoRatios_;
+
+  Bool_t removePointInRatio_;
+  Double_t ratio_threshold_;
 
   GraphCanvaswRatio()
   {
@@ -682,9 +685,17 @@ public:
     canvasName_ = canvasName;
     isLogX_ = isLogX;
     isLogY_ = isLogY;
+    removePointInRatio_ = kFALSE;
+    ratio_threshold_ = -999;
   }
 
-  void Draw( TString drawOp = "EPSAME" )
+  void RemovePointInRatio_BelowThreshold(Double_t threshold)
+  {
+    removePointInRatio_ = kTRUE;
+    ratio_threshold_ = threshold;
+  }
+
+  void Draw( TString drawOp = "EPSAME", TString saveOp = ".pdf" )
   {
     if( !drawOp.Contains("SAME") ) drawOp = drawOp + "SAME";
 
@@ -762,8 +773,9 @@ public:
     TF1 *f_line;
     PlotTool::DrawLine(f_line);
 
-    c_->SaveAs(".pdf");
+    c_->SaveAs(saveOp);
   }
+
 
   void CalcRatioGraph()
   {
@@ -778,9 +790,25 @@ public:
       Int_t color = graphInfos_[i].color;
 
       TGraphAsymmErrors *g_ratioTemp = MakeRatioGraph( g_target, g_ref );
+      if( removePointInRatio_ ) RemovePoint_BelowThreshold(g_ratioTemp, ratio_threshold_);
 
       GraphInfo graphInfoRatio{ g_ratioTemp, legend, color };
       graphInfoRatios_.push_back( graphInfoRatio );
+    }
+  }
+
+  void RemovePoint_BelowThreshold( TGraphAsymmErrors* g_ratio, Double_t threshold )
+  {
+    Int_t nPoint = g_ratio->GetN();
+    for(Int_t i_p=0; i_p<nPoint; i_p++)
+    {
+      Double_t x, y;
+      g_ratio->GetPoint( i_p, x, y );
+      if( x < threshold )
+      {
+        printf("[RemovePoint_BelowThreshold] (x, y) = (%lf, %lf) -> Removed\n", x, y);
+        g_ratio->SetPoint( i_p, x, 0 );
+      }
     }
   }
 
