@@ -13,7 +13,8 @@ export ROOT_INCLUDE_PATH=${MUONTNP_PATH}:${ROOT_INCLUDE_PATH}
 # export SCRAM_ARCH=slc6_amd64_gcc700
 # cmsswVersion=CMSSW_10_2_1 # -- SkimTree is not working ... why?
 # cmsswVersion=CMSSW_10_1_9 # -- SkimTree is not working ... why?
-export SCRAM_ARCH=slc6_amd64_gcc630
+# export SCRAM_ARCH=slc6_amd64_gcc630
+export SCRAM_ARCH=slc7_amd64_gcc630 # -- move to slc7
 cmsswVersion=CMSSW_9_2_0
 
 
