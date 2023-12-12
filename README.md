@@ -1,5 +1,11 @@
 # (Automated) TnP fitter
 
+## Repository to prepare the plots in TRG-19\-001
+
+* Codes are synchronized with the backup code, used to produce the plots in MUO-19-001
+  * Similar to `v06_SingleMuEffForPaper` branch
+* `setup.sh`: change from `slc6` to `slc7` (to avoid an error due to the difference of OS version)
+
 
 
 ## Environment
