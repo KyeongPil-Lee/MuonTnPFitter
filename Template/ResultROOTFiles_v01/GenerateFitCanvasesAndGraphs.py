@@ -40,7 +40,7 @@ class TnPInfoExtractor:
             sys.exit()
 
         # -- directory with efficiency graphs
-        effDirPath   = "%s/%s/fit_eff_plots" % ( self.treeName, dirObject1.GetListOfKeys().At(0).GetName() )
+        effDirPath   = "%s/%s/cnt_eff_plots" % ( self.treeName, dirObject1.GetListOfKeys().At(0).GetName() )
         effDirObject = myFile.GetDirectory( effDirPath )
         print "now in %s" % effDirPath
 
@@ -176,7 +176,7 @@ class TnPInfoExtractor:
 
     def SaveGraph_1D(self, effDirObject, graphName):
         canvas = effDirObject.GetListOfKeys().At(0).ReadObj()
-        graph = canvas.GetPrimitive("hxy_fit_eff").Clone()
+        graph = canvas.GetPrimitive("hxy_cnt_eff").Clone()
         graphName_before = canvas.GetName()
         graph.SetName( graphName )
         print "\tgraph: %s -> %s" % (graphName_before, graphName)
