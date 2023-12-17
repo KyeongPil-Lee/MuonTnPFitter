@@ -99,6 +99,7 @@ Template = cms.EDAnalyzer("TagProbeFitTreeAnalyzer",
         abseta = cms.vstring("muon |#eta|", "0", "2.5", ""),
         tag_abseta = cms.vstring("tag muon |#eta|", "0", "2.5", ""),
         tag_nVertices = cms.vstring("Number of vertices", "0", "999", ""),
+        run = cms.vstring("run number", "0", "999999", ""),
         # combRelIsoPF04dBeta = cms.vstring("pf relative isolation", "0", "999", ""),
         # tkIso = cms.vstring("Tracker Isolation", "0", "999", ""),
         # relTkIso = cms.vstring("Relative Tracker Isolation", "0", "999", ""),
@@ -397,6 +398,14 @@ SINGLE_BIN  = cms.PSet(
     abseta = cms.vdouble( 0.0, EtaMax),
 )
 
+RUN_BINS  = cms.PSet(
+        run = cms.vdouble(
+        273158-0.5, 274998-0.5, 275886-0.5, 276525-0.5, 276831-0.5, 277166-0.5, 278769-0.5, 279691-0.5, 280187-0.5, 282033-0.5, 283407-0.5, ## 2016 
+        297050-0.5, 297557-0.5, 300087-0.5, 300574-0.5, 301461-0.5, 302322-0.5, 303838-0.5, 304199-0.5, 304797-0.5, 305247-0.5, 305636-0.5, 306091-0.5, ## 2017
+        315257-0.5, 315702-0.5, 316110-0.5, 316361-0.5, 316758-0.5, 317291-0.5, 317626-0.5, 319347-0.5, 319756-0.5, 320673-0.5, 321004-0.5, 321230-0.5, 321475-0.5, 321908-0.5, 322113-0.5, 322381-0.5, 323693-0.5, 324201-0.5, 324878-0.5, 325172+0.5), ## 2018
+    pt = cms.vdouble(  PtMin, 9999 ),
+    abseta = cms.vdouble(  0.0, EtaMax),
+)
 
 process.TnP_MuonID = Template.clone(
     InputFileNames = cms.vstring("../Input/Input_Final.root"),
@@ -416,7 +425,7 @@ IDS = [args[1]] #here the id is taken from the arguments provided to cmsRun
 # ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("pteta",PT_ETA_BINS), ("single",SINGLE_BIN) ]
 # ALLBINS = [ ("pt",PT_BINS), ("pteta",PT_ETA_BINS) ]
 # ALLBINS = [ ("pteta",PT_ETA_BINS) ]
-ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN) ]
+ALLBINS = [ ("pt",PT_BINS), ("eta",ETA_BINS), ("phi",PHI_BINS), ("vtx",VTX_BINS), ("single",SINGLE_BIN), ("run",RUN_BINS) ]
 # ALLBINS = [ ("pt",PT_BINS) ]
 
 if len(args) > 1 and args[1] not in IDS: IDS += [ args[1] ]
