@@ -65,19 +65,20 @@ private:
     if( var == "vtx" ) canvas->SetRangeY( 0.6, 1.1 );
 
     // canvas->SetRangeRatio(0.83, 1.17);
-    canvas->SetRangeRatio(0.88, 1.039);
+    // canvas->SetRangeRatio(0.88, 1.039);
+    canvas->SetRangeRatio(0.84, 1.06);
 
     // -- latex
     canvas->RegisterLatex(0.13, 0.955, 61, 0.9, "CMS");
-    canvas->RegisterLatex(0.33, 0.955, 42, 0.6, "36 fb^{-1} (2016), 38 fb^{-1} (2017), 60 fb^{-1} (2018) (13 TeV)");
-    canvas->RegisterLatex(0.16, 0.91, 42, 0.6, GetTrigInfo(trigType));
+    canvas->RegisterLatex(0.275, 0.955, 42, 0.6, "36.3 fb^{-1} (2016), 38.0 fb^{-1} (2017), 59.7 fb^{-1} (2018) (13 TeV)");
+    canvas->RegisterLatex(0.15, 0.91, 42, 0.83, GetTrigInfo(trigType));
     TString cutInfo = "";
     TString cutInfo_pt = TString::Format("p_{T}(#mu^{offline}) > %d GeV", (trigType == "IsoMu24") ? 26 : 52 );
     TString cutInfo_eta = "|#eta(#mu^{offline})| < 2.4";
     if( var == "pt" )  cutInfo = cutInfo_eta;
     if( var == "eta" ) cutInfo = cutInfo_pt;
     if( var == "vtx" ) cutInfo = cutInfo_pt + ", " + cutInfo_eta;
-    canvas->RegisterLatex(0.16, 0.87, 42, 0.6, cutInfo);
+    canvas->RegisterLatex(0.15, 0.85, 42, 0.83, cutInfo);
 
     TString plotPath = "./output";
     if(gSystem->mkdir(plotPath, kTRUE) != -1)
@@ -113,7 +114,7 @@ private:
     if( year == "2017" ) marker = 21;
     if( year == "2018" ) marker = 22;
 
-    canvas->Register(g_data, year+" Data", color, marker);
+    canvas->Register(g_data, year+" data", color, marker);
     canvas->Register_MC(g_MC);
     // canvas->Register(tnpGraph_2017->g_eff_, tnpGraph_2017->legendInfo_, kRed,   21);
     // canvas->Register(tnpGraph_2018->g_eff_, tnpGraph_2018->legendInfo_, kBlack, 22);
@@ -153,11 +154,11 @@ private:
     // -- latex
     canvas->RegisterLatex(0.13, 0.955, 61, 0.9, "CMS");
     if( year == "2018" )
-      canvas->RegisterLatex(0.68, 0.955, 42, 0.6, "60 fb^{-1} (2018) (13 TeV)");
+      canvas->RegisterLatex(0.665, 0.955, 42, 0.6, "59.7 fb^{-1} (2018) (13 TeV)");
     if( year == "2017" )
-      canvas->RegisterLatex(0.68, 0.955, 42, 0.6, "38 fb^{-1} (2017) (13 TeV)");
+      canvas->RegisterLatex(0.665, 0.955, 42, 0.6, "38.0 fb^{-1} (2017) (13 TeV)");
     if( year == "2016" )
-      canvas->RegisterLatex(0.68, 0.955, 42, 0.6, "36 fb^{-1} (2016) (13 TeV)");
+      canvas->RegisterLatex(0.665, 0.955, 42, 0.6, "36.3 fb^{-1} (2016) (13 TeV)");
 
     canvas->RegisterLatex(0.16, 0.91, 42, 0.6, GetTrigInfo(trigType));
 
